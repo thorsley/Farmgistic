@@ -1,13 +1,16 @@
 import React from 'react';
-import Auth from './Components/Auth/Auth'
 import './App.css';
+import Splash from './components/Splash/Splash';
+import Auth from './components/Auth/Auth';
 
-function App() {
+class App extends React.Component {
+  render(){
   return (
     <div className="App">
-     <Auth/>
+      <Splash />
+      {/* <Auth /> */}
     </div>
-  );
+  )};
 }
 
 export default App;
