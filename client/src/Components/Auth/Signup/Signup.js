@@ -101,7 +101,7 @@ class Signup extends Component{
           className={classes.textField}
            type="email"
            name="email"
-           autoComplete="email"
+           autoComplete="off"
            margin="normal"
            variant="outlined"
          />
