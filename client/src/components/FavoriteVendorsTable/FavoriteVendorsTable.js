@@ -10,17 +10,17 @@ class FavoriteVendorsTable extends React.Component{
         return (
             <>
             <div className='scroll' >
-                <h3>Table of Favorite Farm Booths</h3>
+                <h3>Table of Everyone's Favorite Farm Booths</h3>
                 <Card className="cardBox">
                     <CardContent>
                         <Typography className="titleCard" variant="h5" component="h2">
-                            Farm Name
+                            Bappy Hunny Farm
                         </Typography>
                         <Typography variant="subtitle1" component="p">
-                            Address
+                            Market: Indianapolis - Downtown
                         </Typography>
                         <Typography variant="body1" component="p">
-                            # of ❤︎'s
+                            # of ❤︎'s: 6
                         </Typography>
                         <Typography variant="body2" component="p">
                             Short Bio: this is my box this is my box i never travel without my box...in the third drawer in the third drawer oh little boy in the third drawer i keep licorice licorice black sweet licorice black sweet licorice have some
