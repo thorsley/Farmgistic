@@ -1,5 +1,0 @@
-"# Farmgistic" 
-
-trevor
-AB
-
