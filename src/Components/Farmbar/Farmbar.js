@@ -8,6 +8,7 @@ import {
   import FavoriteVendorsTable from '../FavoriteVendorsTable/FavoriteVendorsTable';
 import About from '../About/About';
 import Market from "../Market/Market";
+import CreateMarket from '../Market/CreateMarket/CreateMarket';
 
   export default function Farmbar() {
     return (
@@ -19,11 +20,18 @@ import Market from "../Market/Market";
                 <Link style={{textDecoration:"none"}} to="/">Home</Link>
               </li>
               <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
-                <Link style={{textDecoration:"none"}} to="/users">User Content</Link>
+                <Link style={{textDecoration:"none"}} to="/users">Customer Content</Link>
               </li>
               <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
                 <Link style={{textDecoration:"none"}} to="/about">About Farm•gistic</Link>
               </li>
+              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
+                <Link style={{textDecoration:"none"}} to="/vendor">Vendor Content</Link>
+              </li>
+              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
+                <Link style={{textDecoration:"none"}} to="/admin">Admin Content</Link>
+              </li>
+
             </ul>
           </nav>
   
@@ -35,6 +43,12 @@ import Market from "../Market/Market";
             </Route>
             <Route path="/users">
               <Users />
+            </Route>
+            <Route path="/vendor">
+              <Vendor />
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
             <Route path="/">
               <Home />
@@ -54,9 +68,26 @@ import Market from "../Market/Market";
   function Users() {
     return (
         <>
-    <h2>UserContent depends on your authorization. </h2>
-    <h3>Customer View:</h3>
-    <Market />
+        <h2>UserContent depends on your authorization. </h2>
+        <h3>Customer View:</h3>
+        <Market />
         </>
     );
+  }
+
+  function Vendor() {
+    return (
+      <>
+      <p>Search for Markets, create Booth, and Display your vendor card</p>
+      </>
+    );
+  }
+
+  function Admin() {
+    return (
+      <>
+      <p>Create Market, Add Vendors to Market, Plot Vendors in Market</p>
+      <CreateMarket />
+      </>
+    )
   }
