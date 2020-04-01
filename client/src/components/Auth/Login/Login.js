@@ -32,11 +32,11 @@ class Login extends Component{
         return(
             <div >
               <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-                >
+  container
+  direction="column"
+  justify="center"
+  alignItems="center"
+>
               <h1>Login</h1>
             <TextField
             id="outlined-email-input"

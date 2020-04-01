@@ -29,7 +29,7 @@ class FavoriteVendorsTable extends React.Component{
                 </Card>
                 {/* {this.state.favVendor.map((booth, key) => {
                     return (
-                        <div >
+                        <div>
                             <div key={key}>
                             <Card className="cardBox">
                             <CardContent>
