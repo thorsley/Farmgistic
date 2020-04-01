@@ -10,17 +10,17 @@ class FavoriteVendorsTable extends React.Component{
         return (
             <>
             <div className='scroll' >
-                <h3>Table of Everyone's Favorite Farm Booths</h3>
+                <h3>Table of Favorite Farm Booths</h3>
                 <Card className="cardBox">
                     <CardContent>
                         <Typography className="titleCard" variant="h5" component="h2">
-                            Bappy Hunny Farm
+                            Farm Name
                         </Typography>
                         <Typography variant="subtitle1" component="p">
-                            Market: Indianapolis - Downtown
+                            Address
                         </Typography>
                         <Typography variant="body1" component="p">
-                            # of ❤︎'s: 6
+                            # of ❤︎'s
                         </Typography>
                         <Typography variant="body2" component="p">
                             Short Bio: this is my box this is my box i never travel without my box...in the third drawer in the third drawer oh little boy in the third drawer i keep licorice licorice black sweet licorice black sweet licorice have some
@@ -30,7 +30,6 @@ class FavoriteVendorsTable extends React.Component{
                 {/* {this.state.favVendor.map((booth, key) => {
                     return (
                         <div >
-
                             <div key={key}>
                             <Card className="cardBox">
                             <CardContent>
