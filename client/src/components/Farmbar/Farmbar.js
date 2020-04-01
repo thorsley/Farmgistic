@@ -8,7 +8,7 @@ import {
   import FavoriteVendorsTable from '../FavoriteVendorsTable/FavoriteVendorsTable';
 import About from '../About/About';
 import Market from "../Market/Market";
-import CreateMarket from '../Market/CreateMarket/CreateMarket';
+import AdminContent from "../AdminContent/AdminContent";
 
   export default function Farmbar() {
     return (
@@ -86,8 +86,7 @@ import CreateMarket from '../Market/CreateMarket/CreateMarket';
   function Admin() {
     return (
       <>
-      <p>Create Market, Add Vendors to Market, Plot Vendors in Market</p>
-      <CreateMarket />
+      <AdminContent />
       </>
     )
   }
