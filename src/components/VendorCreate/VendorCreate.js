@@ -1,9 +1,10 @@
 import React from 'react';
-
+//material ui imports
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+
 
 const styles = theme => ({
     container: {
@@ -25,12 +26,6 @@ const styles = theme => ({
         margin: theme.spacing.unit,
       },
   });
-
-
-
-
-
-
 
 
 class VendorCreate extends React.Component{
