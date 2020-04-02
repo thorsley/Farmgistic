@@ -56,6 +56,13 @@ const rows = [
 ];
 
 class Auth extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state = {
+      // token: this.props.token
+    };
+  }
   render() {
     const { classes } = this.props;
     return (
