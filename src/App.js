@@ -11,8 +11,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Splash />
-        {/* <Auth updateToken={this.updateToken} /> */}
+        {/* {localStorage.token ? <Splash /> : <Auth />} */}
+        {/* <Splash /> */}
+        <Auth />
         {/* <VendorCreate /> */}
       </div>
     );
