@@ -1,5 +1,5 @@
-import React from './node_modules/react';
-import { Button, Form, FormGroup, Label, Input } from './node_modules/reactstrap';
+import React from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class CreateMarket extends React.Component {
     constructor(props){

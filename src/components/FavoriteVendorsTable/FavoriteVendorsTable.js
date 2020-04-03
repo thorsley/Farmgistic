@@ -1,7 +1,7 @@
-import React from './node_modules/react';
-import Card from './node_modules/@material-ui/core/Card';
-import Typography from './node_modules/@material-ui/core/Typography';
-import CardContent from './node_modules/@material-ui/core/CardContent';
+import React from 'react';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
 import './FavoriteVendorsTable.css';
 
 class FavoriteVendorsTable extends React.Component{
