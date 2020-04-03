@@ -68,8 +68,8 @@ import AdminContent from "../AdminContent/AdminContent";
   function Users() {
     return (
         <>
-        <h2>UserContent depends on your authorization. </h2>
-        <h3>Customer View:</h3>
+        {/* <h2>UserContent depends on your authorization. </h2>
+        <h3>Customer View:</h3> */}
         <Market />
         </>
     );
