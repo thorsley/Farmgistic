@@ -1,8 +1,8 @@
 /* 
-    Dark Blue: #287DA6
-    Light Blue: #45A0C8
-    Dark Green: #7C8118
-    Light Green: #D2DF58
+    Dark Blue: #1A506B
+    Light Blue: #C9E3EE
+    Dark Green: #656614
+    Light Green: #E5ED9C
     Gray: #ECECEC
     White: #FFFFFF
     Cod Gray: #191919
@@ -10,7 +10,7 @@
 
 .App {
   text-align: center;
-  background: linear-gradient(to bottom, transparent, #287DA6 );
+  background: linear-gradient(to bottom, transparent, #1A506B );
   color: #191919;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0 auto;

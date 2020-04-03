@@ -1,15 +1,15 @@
-import React from './node_modules/react';
+import React from 'react';
 
-import SearchInput, {createFilter} from './node_modules/react-search-input'
+import SearchInput, {createFilter} from 'react-search-input'
 
-import PropTypes from './node_modules/prop-types';
-import { withStyles } from './node_modules/@material-ui/core/styles';
-import Table from './node_modules/@material-ui/core/Table';
-import TableBody from './node_modules/@material-ui/core/TableBody';
-import TableCell from './node_modules/@material-ui/core/TableCell';
-import TableHead from './node_modules/@material-ui/core/TableHead';
-import TableRow from './node_modules/@material-ui/core/TableRow';
-import Paper from './node_modules/@material-ui/core/Paper';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import PlotVendors from '../PlotVendors/PlotVendors';
 
 const styles = theme => ({
