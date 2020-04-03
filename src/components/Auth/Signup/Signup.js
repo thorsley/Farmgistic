@@ -82,7 +82,6 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("FirstName: ", this.state.firstName);
     fetch("http://localhost:3003/auth/signup", {
       method: "POST",
       body: JSON.stringify({
@@ -98,10 +97,10 @@ class Signup extends Component {
       .then(res => res.json())
       .then(logData => {
         localStorage.setItem("token", logData.sessionToken);
-        console.log(logData);
+        localStorage.setItem("userType", logData.user.userType);
+        console.log(localStorage.token);
       })
-      .catch(error => console.error("Error:", error))
-      .then(response => console.log("Success:", response));
+      .catch(error => console.error("Error:", error));
   };
 
   render() {
