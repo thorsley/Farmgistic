@@ -49,7 +49,7 @@ const styles = theme => ({
           marketTable: json
         })
         // console.log(json)
-        //   console.log(this.state.marketTable)
+          console.log(this.state.marketTable)
       }).catch(error => console.error('Error:', error))
   }
 
