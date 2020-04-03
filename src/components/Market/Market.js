@@ -97,7 +97,6 @@ const styles = theme => ({
         this.setState({searchTerm: term})}
 }
 
-
 Market.propTypes = {
     classes: PropTypes.object.isRequired,
   };
