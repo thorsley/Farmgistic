@@ -1,10 +1,10 @@
-import React from "react";
+import React from "./node_modules/react";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
-  } from "react-router-dom";
+  } from "./node_modules/react-router-dom";
   import FavoriteVendorsTable from '../FavoriteVendorsTable/FavoriteVendorsTable';
 import About from '../About/About';
 import Market from "../Market/Market";

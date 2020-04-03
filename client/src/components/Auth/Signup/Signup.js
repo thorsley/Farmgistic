@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 //material ui imports
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import Typography from '@material-ui/core/Typography';
+import PropTypes from './node_modules/prop-types';
+import { withStyles } from './node_modules/@material-ui/core/styles';
+import TextField from './node_modules/@material-ui/core/TextField';
+import Button from './node_modules/@material-ui/core/Button';
+import Modal from './node_modules/@material-ui/core/Modal';
+import Typography from './node_modules/@material-ui/core/Typography';
 
 
 

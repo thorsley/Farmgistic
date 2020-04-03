@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/react';
 import AddVendorToMarket from './AddVendorToMarket/AddVendorToMarket';
 import CreateMarket from '../Market/CreateMarket/CreateMarket';
 
