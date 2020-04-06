@@ -13,8 +13,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {localStorage.token ? <Splash /> : <Auth />}
-        {/* <Splash /> */}
+        {/* {localStorage.token ? <Splash /> : <Auth />} */}
+        <Splash />
         {/* <Auth /> */}
         {/* <VendorCreate /> */}
       </div>
