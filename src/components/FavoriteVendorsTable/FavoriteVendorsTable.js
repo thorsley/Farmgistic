@@ -19,7 +19,7 @@ class FavoriteVendorsTable extends React.Component{
         fetch('http://localhost:3003/favorite/', {
             method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MTk5MTA1LCJleHAiOjE1ODYyODU1MDV9.FF7Jlk70MKWE45zYSDTviMJtHybeZiitnzABMBay3kI'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MjY1Mzk3LCJleHAiOjE1ODYzNTE3OTd9.ZVWZ9k6N-POXifa5dIRkTPNyLb_6Ze0-x7pCAGJoXrk'
                 // 'Authorization': props.token
             })
         }).then ( (res) => res.json())
@@ -35,7 +35,7 @@ class FavoriteVendorsTable extends React.Component{
             <div className='scroll' style={{justifyContent: 'center', overflow: 'scroll'}} >
                 <br />
                 <br />
-                <h2>Favorite Farm Booths</h2>
+                <h1 style={{color:'#E5ED9C'}}>Favorite Farm Booths</h1>
                 <br />
                 <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 {this.state.favVendors.sort((a, b) => b.booth.likes - a.booth.likes).map((vendor) => {
@@ -45,7 +45,7 @@ class FavoriteVendorsTable extends React.Component{
                                 <Typography className="titleCard" variant="h5" component="h2">
                                     {vendor.booth.farmName}
                                 </Typography>
-                                <Typography variant="body1" component="p">
+                                <Typography style={{color:'#1A506B'}} variant="body1" component="p">
                                      ❤︎ {vendor.booth.likes}
                                 </Typography>
                                 <Typography variant="body2" component="p">
