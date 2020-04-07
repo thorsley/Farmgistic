@@ -10,11 +10,11 @@
 
 .App {
   text-align: center;
-  background: linear-gradient(to bottom, transparent, #1A506B );
+  /* background: linear-gradient(to top, transparent, #1A506B ); */
   color: #191919;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0 auto;
-  height: 150vh;
-  width: 96vw;
-  padding: 3em;
+  height: 136vh;
+  width: 100vw;
+  padding: 0em;
 }
