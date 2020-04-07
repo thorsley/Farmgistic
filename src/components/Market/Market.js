@@ -46,7 +46,9 @@ const styles = theme => ({
       }).then ( (res) => res.json())
       .then ( json => {
         this.setState({
-          marketTable: json
+          marketTable: json,
+          marketID: 0,
+          marketSize: ""
         })
         // console.log(json)
           console.log(this.state.marketTable)
@@ -79,7 +81,7 @@ const styles = theme => ({
                                 <TableCell component="th" scope="row">{market.marketName}</TableCell>
                                 <TableCell align="right">{market.address}</TableCell>
                                 <TableCell align="right">{market.size}</TableCell>
-                                <TableCell align="right"><button onClick={e => {this.setState({marketID: market.id})}}>View Map</button></TableCell>
+                                <TableCell align="right"><button onClick={e => {this.setState({marketID: market.id, marketSize: market.size})}}>View Map</button></TableCell>
                               </TableRow>
                       )})}
                     </TableBody>
@@ -88,8 +90,7 @@ const styles = theme => ({
                 <h6>Select View Map to be directed to your Market!</h6>
                 <hr />
                 <br />
-                          <p>Market ID: {this.state.marketID}</p>
-                          <PlotVendors marketID={this.state.marketID} />
+                <PlotVendors marketID={this.state.marketID} marketSize={this.state.marketSize} />
             </div>
         )
       }
