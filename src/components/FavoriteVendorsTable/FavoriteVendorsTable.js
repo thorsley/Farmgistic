@@ -35,7 +35,7 @@ class FavoriteVendorsTable extends React.Component{
             <div className='scroll' style={{justifyContent: 'center', overflow: 'scroll'}} >
                 <br />
                 <br />
-                <h1 style={{color:'#E5ED9C'}}>Favorite Farm Booths</h1>
+                <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '.4em', margin: '0 3em', borderRadius: '.1em'}}>Favorite Farm Booths</h1>
                 <br />
                 <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 {this.state.favVendors.sort((a, b) => b.booth.likes - a.booth.likes).map((vendor) => {
