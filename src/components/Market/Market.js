@@ -1,4 +1,4 @@
-import React from 'react';
+import from 'react';
 
 import SearchInput, {createFilter} from 'react-search-input'
 
@@ -27,35 +27,42 @@ const styles = theme => ({
     },
   });
       
-  const KEYS_TO_FILTERS = ['id', 'marketName', 'address', 'size']
+ 
 
-  class Market extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        marketTable: [],
-        searchTerm: "",
-        marketID: 0
-      }
-      this.searchUpdated = this.searchUpdated.bind(this)
-    }
-    componentWillMount() {
-      fetch('http://localhost:3003/market/', {
-          method: 'GET',
-          headers: new Headers({
-              'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODQxMjY2LCJleHAiOjE1ODU5Mjc2NjZ9.gH4nO5LQOEMbbQ62dGYiQb-o2qZyHMbIPuP32lMugd4'
-              // 'Authorization': props.token
-          })
-      }).then ( (res) => res.json())
-      .then ( json => {
+const KEYS_TO_FILTERS = ["id", "marketName", "address", "size"];
+
+class Market extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      marketTable: [],
+      searchTerm: "",
+      marketID: 0,
+    };
+    this.searchUpdated = this.searchUpdated.bind(this);
+  }
+  componentWillMount() {
+    fetch("http://localhost:3003/market/", {
+      method: "GET",
+      headers: new Headers({
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODQxMjY2LCJleHAiOjE1ODU5Mjc2NjZ9.gH4nO5LQOEMbbQ62dGYiQb-o2qZyHMbIPuP32lMugd4",
+        // 'Authorization': props.token
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
         this.setState({
           marketTable: json,
+
+        });
+
           marketID: 0,
           marketSize: ""
         })
-        // console.log(json)
-          console.log(this.state.marketTable)
-      }).catch(error => console.error('Error:', error))
+
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
     render() {
@@ -118,10 +125,11 @@ const styles = theme => ({
       }
       searchUpdated (term) {
         this.setState({searchTerm: term})}
+
 }
 
 Market.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+  classes: PropTypes.object.isRequired,
+};
 
-export default  withStyles(styles) (Market);
+export default withStyles(styles)(Market);

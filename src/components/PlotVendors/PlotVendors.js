@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 class PlotVendors extends React.Component {
@@ -12,6 +13,7 @@ class PlotVendors extends React.Component {
             <div>Market ID: {this.props.marketID} - Market Size: {this.props.marketSize}</div>
         )
     }
+
 }
 
 export default PlotVendors;

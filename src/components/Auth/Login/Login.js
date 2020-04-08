@@ -6,23 +6,23 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
-const styles = theme => ({
+const styles = (theme) => ({
   textField: {
     marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   dense: {
-    marginTop: 16
+    marginTop: 16,
   },
   menu: {
-    width: 200
+    width: 200,
   },
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   input: {
-    display: "none"
-  }
+    display: "none",
+  },
 });
 
 class Login extends Component {
@@ -30,35 +30,36 @@ class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      pasword: ""
+      pasword: "",
     };
   }
 
-  handleEmail = e => {
+  handleEmail = (e) => {
     this.setState({ email: e.target.value });
   };
-  handlePassword = e => {
+  handlePassword = (e) => {
     this.setState({ password: e.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     fetch("http://localhost:3003/auth/login", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
       }),
       headers: new Headers({
-        "Content-Type": "application/json"
-      })
+        "Content-Type": "application/json",
+      }),
     })
-      .then(res => res.json())
-      .then(logData => {
+      .then((res) => res.json())
+      .then((logData) => {
         localStorage.setItem("token", logData.sessionToken);
         localStorage.setItem("userType", logData.user.userType);
+        this.props.loggedIn();
       })
-      .catch(error => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error));
   };
 
   render() {
@@ -108,7 +109,7 @@ class Login extends Component {
   }
 }
 Login.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Login);

@@ -1,7 +1,8 @@
-import React from 'react';
-import Farmbar from '../Farmbar/Farmbar';
+import React from "react";
+import Farmbar from "../Farmbar/Farmbar";
 
 class Splash extends React.Component {
+
     render() {
         return(
             <div>
