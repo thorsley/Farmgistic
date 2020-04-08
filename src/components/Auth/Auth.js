@@ -14,31 +14,31 @@ import Grid from "@material-ui/core/Grid";
 
 import "./auth.css";
 
-const CustomTableCell = withStyles(theme => ({
+const CustomTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }))(TableCell);
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     height: 300,
     width: "50%",
     marginTop: theme.spacing.unit * 1,
-    overflowX: "auto"
+    overflowX: "auto",
   },
   table: {
-    minWidth: 500
+    minWidth: 500,
   },
   row: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
-    }
-  }
+      backgroundColor: theme.palette.background.default,
+    },
+  },
 });
 
 let id = 0;
@@ -52,16 +52,13 @@ const rows = [
   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
   createData("Eclair", 262, 16.0, 24, 6.0),
   createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9)
+  createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
 class Auth extends Component {
   constructor(props) {
     super(props);
     console.log(props);
-    this.state = {
-      // token: this.props.token
-    };
   }
   render() {
     const { classes } = this.props;
@@ -100,15 +97,15 @@ class Auth extends Component {
       </Table>
     </Paper>
     </Grid> */}
-        <Login />
-        <Signup />
+        <Login loggedIn={this.props.loggedIn} />
+        <Signup loggedIn={this.props.loggedIn} />
       </div>
     );
   }
 }
 
 Auth.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Auth);
