@@ -10,8 +10,8 @@ export default function Farmbar(props) {
   function clearStorage() {
     localStorage.clear();
     props.loggedIn();
-    // this.props.loggedIn();
   }
+  //
   return (
     <Router>
       <div>
