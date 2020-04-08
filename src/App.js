@@ -24,14 +24,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+
         {localStorage.token ? (
           <Splash loggedIn={this.changeLogin} />
         ) : (
           <Auth loggedIn={this.changeLogin} />
         )}
-        {/* <Splash /> */}
-        {/* <Auth /> */}
-        {/* <VendorCreate /> */}
+       
+
       </div>
     );
   }
