@@ -14,48 +14,50 @@ import Grid from "@material-ui/core/Grid";
 
 import "./auth.css";
 
-const CustomTableCell = withStyles(theme => ({
+const CustomTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }))(TableCell);
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     height: 'fit',
     maxHeight: '50%',
     maxWidth: "83%",
     marginTop: theme.spacing.unit * 1,
-    overflowX: "auto"
+    overflowX: "auto",
   },
   table: {
-    minWidth: 269
+
   },
   head: {
     backgroundColor: '#1A506B',
     color: '#E5ED9C'
+
   },
   row: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
-    }
-  }
+      backgroundColor: theme.palette.background.default,
+    },
+  },
 });
+
 
 
 
 class Auth extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
     this.state = {
       marketTable: []
-      // token: this.props.token
     };
+
   }
 
   componentWillMount() {
@@ -79,8 +81,11 @@ class Auth extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Login />
-        <Signup />
+
+
+        <Login loggedIn={this.props.loggedIn} />
+        <Signup loggedIn={this.props.loggedIn} />
+
         <br />
         <br />
         <Grid
@@ -116,7 +121,7 @@ class Auth extends Component {
 }
 
 Auth.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Auth);
