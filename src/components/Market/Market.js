@@ -78,7 +78,9 @@ class Market extends React.Component {
             gridRowGap: '0px'}}>
               <br />
               <div style={{gridArea: '1 / 4 / 2 / 7', marginRight: '3em'}}>
-                <h1 style={{color: '#E5ED9C'}}>Find your Farmers' Market:</h1>
+              <br />
+              <br />
+                <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '.4em', margin: '0 .5em', borderRadius: '.1em'}}>Find your Farmers' Market:</h1>
                 <br />
                 <br />
                     <SearchInput style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}} className="search-input" onChange={this.searchUpdated} />
@@ -113,7 +115,9 @@ class Market extends React.Component {
                 <PlotVendors marketID={this.state.marketID} marketSize={this.state.marketSize} />
               </div>
                 <div style={{gridArea: '1 / 1 / 2 / 3'}}>
-                  <h1 style={{color: '#E5ED9C', marginLeft: '2em'}}>Your Booths</h1>
+                <br />
+              <br />
+                  <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '.4em', margin: '0 .5em', borderRadius: '.1em'}}>Your Booths</h1>
                   <FavoriteVendorsTableDisplay />
               </div>
             </div>
