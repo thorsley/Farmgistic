@@ -1,4 +1,4 @@
-import from 'react';
+import React from 'react';
 
 import SearchInput, {createFilter} from 'react-search-input'
 
@@ -54,13 +54,9 @@ class Market extends React.Component {
       .then((json) => {
         this.setState({
           marketTable: json,
-
-        });
-
           marketID: 0,
           marketSize: ""
-        })
-
+        });
       })
       .catch((error) => console.error("Error:", error));
   }
