@@ -13,8 +13,14 @@ class VendorContent extends React.Component {
     
     render () {
     return (
-        <div>
-            <p>CreateMarket, AddVendorToMarket, and PlotMarket</p>
+        <div
+        style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(6, 1fr)',
+            gridTemplateRows: '1fr',
+            gridColumnGap: '0px',
+            gridRowGap: '0px'}}
+        >
             <CreateMarket />
             <AddVendorToMarket />
         </div>

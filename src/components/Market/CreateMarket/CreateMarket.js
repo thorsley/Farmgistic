@@ -45,25 +45,50 @@ class CreateMarket extends React.Component {
     }
     render() {
         return (
-            <>
-                <h3>Create a Market</h3>
+            <div style={{gridArea: '1 / 1 / 2 / 3', marginRight: '3em'}}>
+                <br />
+                <br />
+                <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '.4em', margin: '0 .5em', borderRadius: '.1em'}}>Create a Market</h1>
+                <br />
+                <br />
                 <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                         <Label htmlFor="marketName" />
-                        <Input name="marketName" type="text" value={this.marketName} onChange={this.handleMarketName} />
+                        <Input 
+                        style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}}
+                        name="marketName" 
+                        type="text" 
+                        value={this.marketName} 
+                        onChange={this.handleMarketName} />
                     </FormGroup>
+                    <br />
                     <FormGroup>
                         <Label htmlFor="address" />
-                        <Input type="text" name="address" value={this.address} onChange={this.handleAddress} >
+                        <Input 
+                        style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}}
+                        type="text" 
+                        name="address" 
+                        value={this.address} 
+                        onChange={this.handleAddress} >
                         </Input>
                     </FormGroup>
+                    <br />
                     <FormGroup>
                         <Label htmlFor="size" />
-                        <Input type="text" name="size" value={this.size} onChange={this.handleSize} />
+                        <Input 
+                        style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}}
+                        type="text" 
+                        name="size" 
+                        value={this.size} 
+                        onChange={this.handleSize} />
                     </FormGroup>
-                    <Button type="submit">Click to Submit</Button>
+                    <br />
+                    <Button 
+                    style={{borderRadius: '.3em', color: '#C9E3EE', backgroundColor: '#656614'}}
+                    type="submit"
+                    >Click to Submit</Button>
                 </Form>
-            </>
+            </div>
         )
     }
 }

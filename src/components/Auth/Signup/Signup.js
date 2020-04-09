@@ -14,25 +14,25 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
+    transform: `translate(-${top}%, -${left}%)`,
   };
 }
-const styles = theme => ({
+const styles = (theme) => ({
   textField: {
     marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   dense: {
-    marginTop: 16
+    marginTop: 16,
   },
   menu: {
-    width: 200
+    width: 200,
   },
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   input: {
-    display: "none"
+    display: "none",
   },
   paper: {
     position: "absolute",
@@ -40,8 +40,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
-    outline: "none"
-  }
+    outline: "none",
+  },
 });
 
 class Signup extends Component {
@@ -51,25 +51,25 @@ class Signup extends Component {
       firstName: "",
       lastName: "",
       email: "",
-      pasword: ""
+      pasword: "",
     };
   }
 
-  handleFirstName = e => {
+  handleFirstName = (e) => {
     this.setState({ firstName: e.target.value });
   };
-  handleLastName = e => {
+  handleLastName = (e) => {
     this.setState({ lastName: e.target.value });
   };
-  handleEmail = e => {
+  handleEmail = (e) => {
     this.setState({ email: e.target.value });
   };
-  handlePassword = e => {
+  handlePassword = (e) => {
     this.setState({ password: e.target.value });
   };
 
   state = {
-    open: false
+    open: false,
   };
 
   handleOpen = () => {
@@ -80,27 +80,28 @@ class Signup extends Component {
     this.setState({ open: false });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.props);
     fetch("http://localhost:3003/auth/signup", {
       method: "POST",
       body: JSON.stringify({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
       }),
       headers: new Headers({
-        "Content-Type": "application/json"
-      })
+        "Content-Type": "application/json",
+      }),
     })
-      .then(res => res.json())
-      .then(logData => {
+      .then((res) => res.json())
+      .then((logData) => {
         localStorage.setItem("token", logData.sessionToken);
         localStorage.setItem("userType", logData.user.userType);
-        console.log(localStorage.token);
+        this.props.loggedIn();
       })
-      .catch(error => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error));
   };
 
   render() {
@@ -184,7 +185,7 @@ class Signup extends Component {
   }
 }
 Signup.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Signup);

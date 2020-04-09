@@ -1,92 +1,147 @@
 import React from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-  import FavoriteVendorsTable from '../FavoriteVendorsTable/FavoriteVendorsTable';
-import About from '../About/About';
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import FavoriteVendorsTable from "../FavoriteVendorsTable/FavoriteVendorsTable";
+import About from "../About/About";
 import Market from "../Market/Market";
 import AdminContent from "../AdminContent/AdminContent";
 
-  export default function Farmbar() {
-    return (
-      <Router>
-        <div>
-          <nav>
-            <ul style={{textAlign:"right"}}>
-              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
-                <Link style={{textDecoration:"none"}} to="/">Home</Link>
-              </li>
-              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
-                <Link style={{textDecoration:"none"}} to="/users">Customer Content</Link>
-              </li>
-              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
-                <Link style={{textDecoration:"none"}} to="/about">About Farm•gistic</Link>
-              </li>
-              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
-                <Link style={{textDecoration:"none"}} to="/vendor">Vendor Content</Link>
-              </li>
-              <li style={{ display:'inline-block', padding:".3em", borderRadius:".3em", border:" .09em inset #191919"}}>
-                <Link style={{textDecoration:"none"}} to="/admin">Admin Content</Link>
-              </li>
+class Farmbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.state = {
+    collapsed: true,
+    collapseDropdown: true
+    };
+  }
+  toggleNavbar() {
+    this.setState({
+    collapsed: !this.state.collapsed,
+    });
+  }
+  toggleDropdown() {
+    this.setState({
+    collapseDropdown: !this.state.collapseDropdown,
+    });
+  }
+  clearStorage() {
+    localStorage.clear();
+    // props.loggedIn();
+    this.props.loggedIn();
+  }
+  render() {
+    const collapsed = this.state.collapsed;
+    const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
+    const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
+    const collapseDropdown = this.state.collapseDropdown;
+    const classThree = collapseDropdown ? 'collapse nav-link dropdown-toggle' : 'nav-link dropdown-toggle show';
+    const classFour = collapseDropdown ? 'dropdown-menu' : 'dropdown-menu show';
 
-            </ul>
-          </nav>
-  
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/vendor">
-              <Vendor />
-            </Route>
-            <Route path="/admin">
-              <Admin />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-  
-  function Home() {
-    return <FavoriteVendorsTable />
-    ;
-  }
-  
-  
-  function Users() {
     return (
-        <>
-        {/* <h2>UserContent depends on your authorization. </h2>
-        <h3>Customer View:</h3> */}
-        <Market />
-        </>
-    );
-  }
+    <Router>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark transparent-nav">
+          <div className="container">
+            <a className="navbar-brand" href="#">Farm•gistic</a>
+            <button onClick={this.toggleNavbar} className={`${classTwo}`} type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className={`${classOne}`} id="navbarResponsive">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">About</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/users">Customer</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/vendor">Vendor</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin">Admin</Link>
+                </li>
+                <li className="nav-item dropdown">
+                  <a onClick={this.toggleDropdown} className={`${classThree}`} id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Personal Nonsense
+                  </a>
+                  <div className={`${classFour}`} aria-labelledby="navbarDropdown">
+                    <Link className="dropdown-item" to="/ab">AB</Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/trevor">Trevor</Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/daniel">Daniel</Link>
+                  </div>
+                </li>
+                <li className="nav-item">
+                <button style={{backgroundColor: 'transparent'}} onClick={this.clearStorage}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/vendor">
+            <Vendor />
+          </Route>
+          <Route path="/admin">
+            <Admin />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+          <Route path="/ab">
+            {/* <AB /> */}
+          </Route>
+          <Route path="/trevor">
+            {/* <Trevor /> */}
+          </Route>
+          <Route path="/daniel">
+            {/* <Daniel /> */}
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+}
 
-  function Vendor() {
-    return (
-      <>
+function Home() {
+  return <FavoriteVendorsTable />;
+}
+
+function Users() {
+  return (
+    <>
+      <Market />
+    </>
+  );
+}
+
+function Vendor() {
+  return (
+    <>
       <p>Search for Markets, create Booth, and Display your vendor card</p>
-      </>
-    );
-  }
+    </>
+  );
+}
 
-  function Admin() {
-    return (
-      <>
+function Admin() {
+  return (
+    <>
       <AdminContent />
-      </>
-    )
-  }
+    </>
+  );
+}
+
+export default Farmbar;

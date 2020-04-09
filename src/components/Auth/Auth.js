@@ -9,101 +9,114 @@ import TableCell from "@material-ui/core/TableCell";
 
 import "./auth.css";
 
-const CustomTableCell = withStyles(theme => ({
+const CustomTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }))(TableCell);
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    height: 300,
-    width: "50%",
+    height: 'fit',
+    maxHeight: '50%',
+    maxWidth: "83%",
     marginTop: theme.spacing.unit * 1,
-    overflowX: "auto"
+    overflowX: "auto",
   },
   table: {
-    minWidth: 500
+
+  },
+  head: {
+    backgroundColor: '#1A506B',
+    color: '#E5ED9C'
+
   },
   row: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
-    }
-  }
+      backgroundColor: theme.palette.background.default,
+    },
+  },
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9)
-];
+
 
 class Auth extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
     this.state = {
-      // token: this.props.token
+      marketTable: []
     };
+
   }
+
+  componentWillMount() {
+    fetch('http://localhost:3003/market/', {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODQxMjY2LCJleHAiOjE1ODU5Mjc2NjZ9.gH4nO5LQOEMbbQ62dGYiQb-o2qZyHMbIPuP32lMugd4'
+            // 'Authorization': props.token
+        })
+    }).then ( (res) => res.json())
+    .then ( json => {
+      this.setState({
+        marketTable: json
+      })
+      // console.log(json)
+        console.log(this.state.marketTable)
+    }).catch(error => console.error('Error:', error))
+}
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-        {/* <Grid
-  container
-  direction="row"
-  justify="center"
-  alignItems="center"
->
-                <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>Dessert </CustomTableCell>
-            <CustomTableCell align="right">Calories</CustomTableCell>
-            <CustomTableCell align="right">Fat </CustomTableCell>
-            <CustomTableCell align="right">Carbs </CustomTableCell>
-            <CustomTableCell align="right">Protein </CustomTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow className={classes.row} key={row.id}>
-              <CustomTableCell component="th" scope="row">
-                {row.name}
-              </CustomTableCell>
-              <CustomTableCell align="right">{row.calories}</CustomTableCell>
-              <CustomTableCell align="right">{row.fat}</CustomTableCell>
-              <CustomTableCell align="right">{row.carbs}</CustomTableCell>
-              <CustomTableCell align="right">{row.protein}</CustomTableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-    </Grid> */}
-        <Login />
-        <Signup />
+
+
+        <Login loggedIn={this.props.loggedIn} />
+        <Signup loggedIn={this.props.loggedIn} />
+
+        <br />
+        <br />
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Paper className={classes.root}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <CustomTableCell className={classes.head}>Market:</CustomTableCell>
+                  <CustomTableCell className={classes.head} align="right">Address:</CustomTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.state.marketTable.map(market => (
+                  <TableRow className={classes.row} key={market.id}>
+                    <CustomTableCell component="th" scope="row">
+                      {market.marketName}
+                    </CustomTableCell>
+                    <CustomTableCell align="right">{market.address}</CustomTableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+        </Grid>
       </div>
     );
   }
 }
 
 Auth.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Auth);
