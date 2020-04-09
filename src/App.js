@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-
+import DragnDrop from './components/dragndrop/DragnDrop'
 import Splash from "./components/Splash/Splash";
 import Auth from "./components/Auth/Auth";
 import VendorCreate from "./components/VendorCreate/VendorCreate";
@@ -25,12 +25,13 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        {localStorage.token ? (
+        {/* {localStorage.token ? (
           <Splash loggedIn={this.changeLogin} />
         ) : (
           <Auth loggedIn={this.changeLogin} />
         )}
-       
+        */}
+        <DragnDrop/>
 
       </div>
     );
