@@ -2,20 +2,27 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import SearchInput, {createFilter} from 'react-search-input'
 import './vendorget.css'
+
+
+const KEYS_TO_FILTERS = ['id','marketName', 'address', 'size']
+
 class  VendorGet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data:[],
-            search:""
-        };
+            searchTerm:'',
+        }
+        this.searchUpdated = this.searchUpdated.bind(this)
     }
+
+  
      componentDidMount() {
         fetch('http://localhost:3003/market',{
             method:'GET',
             headers:new Headers({ 
                 'Content-Type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODM3ODE1LCJleHAiOjE1ODU5MjQyMTV9.IpNDAbPE8ekqe8sXgDUjkZtzH4O-rE9agb2uc-IBnxM'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MzUzMDQ3LCJleHAiOjE1ODY0Mzk0NDd9.NNgEmcJfhXRE_Ogu9OC3RpQ3ssIBCv08n1Z_iUWvoZY'
             })
         }).then((response)=>response.json())
         .then((findresponse)=>{
@@ -26,15 +33,17 @@ class  VendorGet extends React.Component {
              console.log(findresponse[0].marketName)
              console.log(findresponse[0].address)
              console.log(findresponse[0].size)
-                
-        })
+        }).catch(error => console.error('Error:', error))
 }
     render() { 
+        const filterdMarkets = this.state.data.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
         return (  
             <div> 
                 <Container>
-            <input type="text" placeholder="Search.." onChange={this.onChange}></input>
-            <button type="submit">Search button</button>
+            {/* <input type="text" placeholder="Search.." onChange={this.onChange}></input>
+            <button type="submit">Search button</button> */}
+            <SearchInput className="search-input" onChange={this.searchUpdated}/>
+
 
         <table className='test'>
         <thead>
@@ -44,7 +53,7 @@ class  VendorGet extends React.Component {
                 <th>Size</th>
             </tr>
         </thead>
-        {this.state.data.map((findresponses,index)=>
+        {filterdMarkets.map((findresponses,index)=>
         (
         <tbody key={index}>
            <tr>
@@ -60,6 +69,8 @@ class  VendorGet extends React.Component {
         </div>
         )
     }
+    searchUpdated (term) {
+        this.setState({searchTerm: term})}
 }
  
 export default VendorGet;

@@ -9,6 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import lightGreen from '@material-ui/core/colors/lightGreen';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 
 import VendorGet from './VendorGet'
 
@@ -47,6 +51,15 @@ const styles = theme => ({
       table: {
         minWidth: 700,
       },
+      buttonroot: {
+        display: 'flex',
+      },
+      formControl: {
+        margin: theme.spacing.unit * 3,
+      },
+      group: {
+        margin: `${theme.spacing.unit}px 0`,
+      },
   });
   
 
@@ -59,9 +72,17 @@ class VendorCreate extends React.Component{
             address:"", 
             URL:"", 
             bio:"", 
+            atMarket:"",
             
-
         };
+        this._handleRadio = this._handleRadio.bind(this);
+        
+    }
+    _handleRadio(event) {
+      const atMarket = event.currentTarget.value === 'true' ? true: false;
+      console.log('handle',atMarket);
+      this.setState({ atMarket });
+    
     }
     handleFarmName = e => {
         this.setState({ farmName: e.target.value})
@@ -81,10 +102,10 @@ class VendorCreate extends React.Component{
         event.preventDefault();
         fetch('http://localhost:3003/booth/add', {
         method: 'POST',
-        body: JSON.stringify( {farmName: this.state.farmName, address: this.state.address, URL: this.state.URL,bio: this.state.bio}),
+        body: JSON.stringify( {farmName: this.state.farmName, address: this.state.address, URL: this.state.URL,bio: this.state.bio,atMarket:this.state.atMarket}),
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODM3ODE1LCJleHAiOjE1ODU5MjQyMTV9.IpNDAbPE8ekqe8sXgDUjkZtzH4O-rE9agb2uc-IBnxM'
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MzUzMDQ3LCJleHAiOjE1ODY0Mzk0NDd9.NNgEmcJfhXRE_Ogu9OC3RpQ3ssIBCv08n1Z_iUWvoZY'
             // 'Authorization': props.token
         })  
     }).then((res)=>res.json())
@@ -94,13 +115,14 @@ class VendorCreate extends React.Component{
             farmName:this.state.marketName, 
             address:this.state.address, 
             URL:this.state.URL, 
-            bio:this.state.bio
+            bio:this.state.bio,
+            atMarket:this.state.atMarket
         })
     }).catch(err=>console.error('Error:',err))
     .then(response => console.log('Success:', response)); 
 }
     render(){
-  
+      const {  atMarket } = this.state;
         const { classes } = this.props;
         return(
             <>
@@ -110,9 +132,6 @@ class VendorCreate extends React.Component{
             <br/>
             <br/>
             <br/>
-
-
-
                <Grid
   container
   direction="column"
@@ -158,8 +177,30 @@ class VendorCreate extends React.Component{
           margin="normal"
           onChange={this.handleBio}
         />
-        
-        <Button  type="submit" variant="contained" color="primary" >
+
+        {/* <RadioGroup
+            aria-label="yes"
+            name="yes"
+            value={toString(this.state.atMarket)}
+            onChange={this._handleRadio}
+          >
+          <FormControlLabel
+              value="Yes"
+              control={<Radio
+                 color="primary"/>}
+              label="yes"
+              labelPlacement="start"
+              value="true"
+              checked={ atMarket === true}/>
+          <FormControlLabel
+              value="no"
+              control={<Radio color="primary" />}
+              label="no"
+              labelPlacement="start"
+              value="false"
+              checked={ atMarket === false}/>
+          </RadioGroup> */}
+        <Button onClick={() => window.location.reload(false)}  type="submit" variant="contained" color="primary" >
         Submit
       </Button>
       </form>
