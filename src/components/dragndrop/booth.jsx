@@ -48,8 +48,8 @@ export default class Booth extends React.Component {
             // isDragDisabled={isDragDisabled}
           >
             {/* <Handle {...provided.dragHandleProps} /> */}
-            {this.props.booth.content}
-            {/* {this.props.boothData} */}
+            {/* {this.props.booth.content} */}
+            {this.props.booth.farmName}
           </Container>
         )}
       </Draggable>

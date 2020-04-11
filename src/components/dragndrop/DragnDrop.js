@@ -7,10 +7,11 @@ import Column from "./column";
 const Container = styled.div`
   display: flex;
 `;
-let boothData = "here";
+let boothData = [];
 
 class DragnDrop extends React.Component {
-  componentWillMount() {
+   state = initialData;
+    componentWillMount() {
     fetch("http://localhost:3003/booth/", {
       method: "GET",
       headers: new Headers({
@@ -21,29 +22,39 @@ class DragnDrop extends React.Component {
       }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        boothData = data;
-      })
+      .then(function(data) {
+          console.log( data)
+          return data.map(post => {
+              return {
+                  id: post.id.toString(),
+                  farmName: post.farmName,
+                  address: post.address,
+                  URL: post.URL,
+                  bio: post.bio,
+                  atMarket: post.atMarket,
+                  likes: post.likes,
+                  marketId: post.marketId
+              };
+          });
+          console.log(data);
+          // boothData = data;
+        })
+        .then(data => {
+            console.log(data)
+            this.state.booths = data
+            // this.setState({
+            //     booths:{
+            //         ...this.state.booths,
+            //         data
+            //     }
+            // })
+            console.log(this.state)
+        })
       .catch((error) => console.error("Error:", error));
   }
-  state = initialData;
-  // CONTRIVED! usually just rely on snapshot values & only onDragEnd is required
-  // onDragStart = () => {
-  //   document.body.style.color = 'orange';
-  //   document.body.style.transition = 'background-color 0.2s ease';
-  // };
-
-  // onDragUpdate = update => {
-  //   const { destination } = update;
-  //   const opacity = destination
-  //   ? destination.index / Object.keys(this.state.tasks).length : 0;
-  // document.body.style.backgroundColor = `rbga(153, 141, 217, ${opacity})`;
-  // }
+  
 
   onDragEnd = (result) => {
-    // document.body.style.color = 'inherit';
-    // document.body.style.backgroundColor = 'inherit';
 
     const { destination, source, draggableId } = result;
 
@@ -60,7 +71,7 @@ class DragnDrop extends React.Component {
 
     const start = this.state.columns[source.droppableId];
     const finish = this.state.columns[destination.droppableId];
-    console.log(this.state.columns[destination.droppableId]);
+    console.log(start.boothIds);
 
     if (start === finish) {
       const newTaskIds = Array.from(start.boothIds);
@@ -134,7 +145,7 @@ class DragnDrop extends React.Component {
           columnOrder: this.order,
         });
       }
-      console.log(boothData);
+      console.log(this.state.booths);
     } else {
     }
   };
@@ -146,7 +157,8 @@ class DragnDrop extends React.Component {
         // onDragStart={this.onDragStart}
         // onDragUpdate={this.onDragUpdate}
       >
-        <button onClick={this.addColumn}>Add Column</button>
+        <button onClick={this.addColumn}>Add 2 Columns</button>
+        <button onClick={this.fetchBooths}>Refresher</button>
         <Container>
           {this.state.columnOrder.map((columnId) => {
             const column = this.state.columns[columnId];
@@ -159,7 +171,7 @@ class DragnDrop extends React.Component {
                 key={column.id}
                 column={column}
                 booth={booth}
-                boothData={boothData}
+                // boothData={boothData}
               />
             );
           })}
