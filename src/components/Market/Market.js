@@ -52,7 +52,6 @@ class Market extends React.Component {
       .then((json) => {
         this.setState({
           marketTable: json,
-
           marketID: 0,
           marketSize: "",
         });
