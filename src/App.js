@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
-import DragnDrop from './components/dragndrop/DragnDrop'
 import Splash from "./components/Splash/Splash";
+import DragnDrop from './components/dragndrop/DragnDrop'
 import Auth from "./components/Auth/Auth";
 import VendorCreate from "./components/VendorCreate/VendorCreate";
+import VendorDisplay from "./components/VendorCreate/VendorCreateDisplay/VendorCreateDisplay"
+import VendorCreateDisplay from "./components/VendorCreate/VendorCreateDisplay/VendorCreateDisplay";
 
 const updateToken = (newToken) => {
   localStorage.setItem("token", newToken);
@@ -29,10 +31,11 @@ class App extends React.Component {
           <Splash loggedIn={this.changeLogin} />
         ) : (
           <Auth loggedIn={this.changeLogin} />
-        )}
-        */}
-        <DragnDrop/>
-
+        )} */}
+       
+     <DragnDrop/>
+       
+        
       </div>
     );
   }

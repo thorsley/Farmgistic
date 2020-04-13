@@ -1,114 +1,196 @@
-import React, {Component} from 'react';
-import './dragndrop.css'
-class DragnDrop extends Component {
-    state = {
-        tasks:[
-            {name:"moon valley",category:"VendorTable", bgcolor: "yellow"},
-            {name:"3 flock farms", category:"VendorTable", bgcolor:"pink"},
-            {name:"becker", category:"booths", bgcolor:"skyblue"}
-        ]
-      }
+import React from "react";
+import styled from "styled-components";
+import { DragDropContext } from "react-beautiful-dnd";
+import initialData from "./initial-data";
+import Column from "./column";
 
-    onDragStart = (ev, id) => {
-        console.log('dragstart:',id);
-        ev.dataTransfer.setData("id", id);
-        // document.createElement('div')
+const Container = styled.div`
+  display: flex;
+`;
+// let boothData = [];
+
+class DragnDrop extends React.Component {
+   state = initialData;
+    componentDidMount() {
+    fetch("http://localhost:3003/booth/", {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8",
+        // 'Authorization': props.token
+      }),
+    })
+      .then((res) => res.json())
+      .then(function(data) {
+          // console.log( data)
+          return data.map(post => {
+              return {
+                  id: (post.id - 1).toString(),
+                  farmName: post.farmName,
+                  address: post.address,
+                  URL: post.URL,
+                  bio: post.bio,
+                  atMarket: post.atMarket,
+                  likes: post.likes,
+                  marketId: post.marketId
+              };
+          });
+          console.log(data);
+          // boothData = data;
+        })
+        .then(data => {
+            console.log(data)
+            // this.state.booths = data
+            this.setState({
+                ...this.state,
+               columns: {
+                     ...this.state.columns,
+                    boothIds: data.map((boothId, key) => boothId.id
+                      )
+          },
+                  booths: 
+                    data
+                  ,
+            })
+            console.log(this.state)
+        })
+      //   .then({this.setState({
+      //     ...this.state,
+      //     columns: {
+      //       boothIds: this.state.booths.id
+      //     }
+      //   })
+      // })
+      .catch((error) => console.error("Error:", error));
+  }
+  
+
+  onDragEnd = (result) => {
+
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
     }
 
-    onDragOver = (ev) => {
-        ev.preventDefault();
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
     }
 
-    onDrop = (ev, cat) => {
-       let id = ev.dataTransfer.getData("id");
-       
-       let tasks = this.state.tasks.filter((task) => {
-           if (task.name == id) {
-               task.category = cat;
-           }
-           return task;
-       });
+    const start = this.state.columns[source.droppableId];
+    const finish = this.state.columns[destination.droppableId];
+    console.log(start.boothIds);
 
-       this.setState({
-           ...this.state,
-           tasks
-       });
+    if (start === finish) {
+      const newTaskIds = Array.from(start.boothIds);
+      newTaskIds.splice(source.index, 1);
+      newTaskIds.splice(destination.index, 0, draggableId);
+
+      const newColumn = {
+        ...start,
+        boothIds: newTaskIds,
+      };
+
+      const newState = {
+        ...this.state,
+        columns: {
+          ...this.state.columns,
+          [newColumn.id]: newColumn,
+        },
+      };
+
+      this.setState(newState);
+      return;
     }
-    
-    render() { 
-        
-        
-        var test = {
-            VendorTable:[],
-            booths:[],
-            row1:[],
-            row2:[]
-    
-        }
-        var tasks =test
-        for(let i =1 ; i<5; i++){
-            test[`row ${i}` ]=[]
-            console.log(test)
-        }
-        this.state.tasks.forEach ((t) => {
-            tasks[t.category].push(
-                <div key={t.name} 
-                    onDragStart = {(e) => this.onDragStart(e, t.name)}
-                    draggable
-                    className="draggable"
-                    style = {{backgroundColor: t.bgcolor}}>
-                    {t.name}
-                </div>
-            );
+
+    // moving from one list to another
+    const startTaskIds = Array.from(start.boothIds);
+    startTaskIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      boothIds: startTaskIds,
+    };
+
+    const finishTaskIds = Array.from(finish.boothIds);
+    finishTaskIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      boothIds: finishTaskIds,
+    };
+
+    const newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
+      },
+    };
+    this.setState(newState);
+  };
+  order = ["column-1", "column-2", "column-3"];
+  i = 3;
+  // names = "column-4";
+  addColumn = () => {
+    if (this.i == 3) {
+      this.i++;
+      this.order.push("column-4", "column-5");
+      {
+        this.setState({
+          columns: {
+            ...this.state.columns,
+            "column-4": {
+              id: "column-4",
+              title: "column 3",
+              boothIds: [],
+            },
+            "column-5": {
+              id: "column-5",
+              title: "column 4",
+              boothIds: [],
+            },
+          },
+          columnOrder: this.order,
         });
-        const newElement = document.createElement('div');
-        
-        // newElement.setAttribute('onDrop', '{(e)=>{this.onDrop(e, "VendorTable")}}');
-        for(let i = 1;i<5;i++){
-            newElement.innerHTML += `<div id=${i}>${i}</div>`;
-           
-        }
-        //     let wrapper = document.getElementsByClassName('wrapper')
-        //     // wrapper.innerHTML +=`<div>${i}</div>`
-        //     var newDiv = document.createElement('div');
-           
-        //     // newDiv.id = 'r'+ i;
-        //     // newDiv.className = 'ansbox';
-        //     // toAdd.appendChild(newDiv);
-        //     // wrapper.appendChild(newDiv);
-        
-        //     // wrapper.appendChild(newDiv);
-        // }
-        // // document.getElementById('test').appendChild('toAdd');
-
-        
-        // newElement.innerText = 'portal element';
-        return (<div>
-            <p> test</p>
-                
-            <div className='wrapper'id="non-portal" ref={node => node.appendChild(newElement)}>
-            <div onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>{this.onDrop(e, "VendorTable")}} >
-            <h1>VendorTable</h1>
-            {tasks.VendorTable}
-            </div> 
-{/* 
-            <div onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>this.onDrop(e, "booths")}>
-            <h1>booths</h1>
-            {tasks.booths}
-            </div>
-
-            <div onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>this.onDrop(e, "row1")}>
-            <h1>Row1</h1>
-            {tasks.row1}
-    
-            </div> */}
-            </div>
-        </div> 
-         );
+      }
+      console.log(this.state.booths);
+    } else {
     }
+  };
+
+  render() {
+    return (
+      <DragDropContext
+        onDragEnd={this.onDragEnd}
+        // onDragStart={this.onDragStart}
+        // onDragUpdate={this.onDragUpdate}
+      >
+        <button onClick={this.addColumn}>Add 2 Columns</button>
+        {/* <button onClick={this.fetchBooths()}>Refresher</button> */}
+        <Container>
+          {this.state.columnOrder.map((columnId) => {
+            const column = this.state.columns[columnId];
+            const booth = column.boothIds.map(
+              (boothId) => this.state.booths[boothId]
+            );
+
+            return (
+              <Column
+                key={column.id}
+                column={column}
+                booth={booth}
+                // boothData={boothData}
+              />
+            );
+          })}
+        </Container>
+      </DragDropContext>
+    );
+  }
 }
- 
+
 export default DragnDrop;

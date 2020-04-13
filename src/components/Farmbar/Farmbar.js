@@ -5,6 +5,7 @@ import FavoriteVendorsTable from "../FavoriteVendorsTable/FavoriteVendorsTable";
 import About from "../About/About";
 import Market from "../Market/Market";
 import AdminContent from "../AdminContent/AdminContent";
+import Trevor from "./Trevor/Modal"
 
 class Farmbar extends React.Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class Farmbar extends React.Component {
                   <div className={`${classFour}`} aria-labelledby="navbarDropdown">
                     <Link className="dropdown-item" to="/ab">AB</Link>
                     <div className="dropdown-divider"></div>
-                    <Link className="dropdown-item" to="/trevor">Trevor</Link>
+                    <Link className="dropdown-item" to="/trevor"><Trevor/></Link>
                     <div className="dropdown-divider"></div>
                     <Link className="dropdown-item" to="/daniel">Daniel</Link>
                   </div>
@@ -104,7 +105,7 @@ class Farmbar extends React.Component {
             {/* <AB /> */}
           </Route>
           <Route path="/trevor">
-            {/* <Trevor /> */}
+            {/* <Trevor/> */}
           </Route>
           <Route path="/daniel">
             {/* <Daniel /> */}
