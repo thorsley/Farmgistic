@@ -1,25 +1,24 @@
 const initialData = {
   booths: {
-    "booth-1": { id: "booth-1", content: "MoonRise Farms" },
-    "booth-2": { id: "booth-2", content: "Becker Farms" },
-    "booth-3": { id: "booth-3", content: "3 Flock Farm" },
-    "booth-4": { id: "booth-4", content: "Moon Valley Farm" },
-    "booth-5": { id: "booth-5", content: "empty" },
-    "booth-6": { id: "booth-6", content: "empty" },
-    "booth-7": { id: "booth-7", content: "empty" },
+    "5": { id: "5", farmName: "MoonRise Farms", address: "", URL: "", bio: "", atMarket: true, likes: 2, marketId: 1 },
+    "6": { id: "6", farmName: "Becker Farms", address: ""},
+    "7": { id: "7", farmName: "3 Flock Farm", address: "" },
+    "8": { id: "8", farmName: "Moon Valley Farm", address: "" },
   },
   columns: {
     "column-1": {
       id: "column-1",
       title: "Un-mapped Booths",
       boothIds: [
-        "booth-1",
-        "booth-2",
-        "booth-3",
-        "booth-4",
-        "booth-5",
-        "booth-6",
-        "booth-7",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+
       ],
     },
     "column-2": {
