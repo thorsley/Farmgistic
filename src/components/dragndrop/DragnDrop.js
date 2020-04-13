@@ -7,26 +7,26 @@ import Column from "./column";
 const Container = styled.div`
   display: flex;
 `;
-let boothData = [];
+// let boothData = [];
 
 class DragnDrop extends React.Component {
    state = initialData;
-    componentWillMount() {
+    fetchBooths() {
     fetch("http://localhost:3003/booth/", {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2NjIyNzYxLCJleHAiOjE1ODY3MDkxNjF9.kQCcnantDKd9wAqN09HYVDG79j0kVPh7hjpiHjBmhZY",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2Nzg3OTY3LCJleHAiOjE1ODY4NzQzNjd9.zSIEvfm8OiJVciBG3cbwyfPeAlchlSYOiDe-ytYjK74",
         // 'Authorization': props.token
       }),
     })
       .then((res) => res.json())
       .then(function(data) {
-          console.log( data)
+          // console.log( data)
           return data.map(post => {
               return {
-                  id: post.id.toString(),
+                  id: (post.id - 1).toString(),
                   farmName: post.farmName,
                   address: post.address,
                   URL: post.URL,
@@ -158,7 +158,7 @@ class DragnDrop extends React.Component {
         // onDragUpdate={this.onDragUpdate}
       >
         <button onClick={this.addColumn}>Add 2 Columns</button>
-        <button onClick={this.fetchBooths}>Refresher</button>
+        <button onClick={this.fetchBooths()}>Refresher</button>
         <Container>
           {this.state.columnOrder.map((columnId) => {
             const column = this.state.columns[columnId];
