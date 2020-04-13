@@ -11,7 +11,7 @@ const Container = styled.div`
 
 class DragnDrop extends React.Component {
    state = initialData;
-    componentDidMount() {
+    componentWillMount() {
     fetch("http://localhost:3003/booth/", {
       method: "GET",
       headers: new Headers({
@@ -55,13 +55,6 @@ class DragnDrop extends React.Component {
             })
             console.log(this.state)
         })
-      //   .then({this.setState({
-      //     ...this.state,
-      //     columns: {
-      //       boothIds: this.state.booths.id
-      //     }
-      //   })
-      // })
       .catch((error) => console.error("Error:", error));
   }
   

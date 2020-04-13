@@ -5,6 +5,8 @@ import FavoriteVendorsTable from "../FavoriteVendorsTable/FavoriteVendorsTable";
 import About from "../About/About";
 import Market from "../Market/Market";
 import AdminContent from "../AdminContent/AdminContent";
+import VendorCreate from "../VendorCreate/VendorCreate";
+import VendorCreateDisplay from "../VendorCreate/VendorCreateDisplay/VendorCreateDisplay";
 
 class Farmbar extends React.Component {
   constructor(props) {
@@ -175,6 +177,8 @@ function Vendor() {
   return (
     <>
       <p>Search for Markets, create Booth, and Display your vendor card</p>
+      <VendorCreate />
+      <VendorCreateDisplay />
     </>
   );
 }

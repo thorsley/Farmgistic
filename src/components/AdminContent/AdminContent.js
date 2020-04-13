@@ -1,6 +1,7 @@
 import React from 'react';
 import AddVendorToMarket from './AddVendorToMarket/AddVendorToMarket';
 import CreateMarket from '../Market/CreateMarket/CreateMarket';
+import DragnDrop from '../dragndrop/DragnDrop';
 
 
 class VendorContent extends React.Component {
@@ -23,6 +24,7 @@ class VendorContent extends React.Component {
         >
             <CreateMarket />
             <AddVendorToMarket />
+            {/* <DragnDrop /> */}
         </div>
     )}
 }

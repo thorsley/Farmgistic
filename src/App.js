@@ -25,13 +25,13 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        {/* {localStorage.token ? (
+        {localStorage.token ? (
           <Splash loggedIn={this.changeLogin} />
         ) : (
           <Auth loggedIn={this.changeLogin} />
         )}
-        */}
-        <DragnDrop/>
+       
+        {/* <DragnDrop/> */}
 
       </div>
     );

@@ -50,7 +50,6 @@ export default class Column extends React.Component {
                 <Booth
                   key={booth.id}
                   booth={booth}
-                    // boothData={boothData}
                   index={index}
                 />
               )) : <span></span>}
