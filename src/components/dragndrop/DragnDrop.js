@@ -11,7 +11,7 @@ const Container = styled.div`
 
 class DragnDrop extends React.Component {
   state = initialData;
-  fetchBooths() {
+  componentDidMount() {
     fetch("http://localhost:3003/booth/", {
       method: "GET",
       headers: new Headers({
@@ -41,15 +41,24 @@ class DragnDrop extends React.Component {
       })
       .then((data) => {
         console.log(data);
-        this.state.booths = data;
-        // this.setState({
-        //     booths:{
-        //         ...this.state.booths,
-        //         data
-        //     }
-        // })
+        // this.state.booths = data
+        this.setState({
+          ...this.state,
+          columns: {
+            ...this.state.columns,
+            boothIds: data.map((boothId, key) => boothId.id),
+          },
+          booths: data,
+        });
         console.log(this.state);
       })
+      //   .then({this.setState({
+      //     ...this.state,
+      //     columns: {
+      //       boothIds: this.state.booths.id
+      //     }
+      //   })
+      // })
       .catch((error) => console.error("Error:", error));
   }
 
@@ -156,7 +165,7 @@ class DragnDrop extends React.Component {
         // onDragUpdate={this.onDragUpdate}
       >
         <button onClick={this.addColumn}>Add 2 Columns</button>
-        <button onClick={this.fetchBooths()}>Refresher</button>
+        {/* <button onClick={this.fetchBooths()}>Refresher</button> */}
         <Container>
           {this.state.columnOrder.map((columnId) => {
             const column = this.state.columns[columnId];
