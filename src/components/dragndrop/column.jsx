@@ -55,9 +55,9 @@ export default class Column extends React.Component {
                   />
                 ))
               ) : (
-                <span>Empty for now</span>
+                <span></span>
               )}
-              // {provided.placeholder}
+              {provided.placeholder}
             </BoothList>
           )}
         </Droppable>

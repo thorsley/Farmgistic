@@ -1,7 +1,7 @@
 const initialData = {
   booths: {
-    "5": {
-      id: "5",
+    "0": {
+      id: "0",
       farmName: "MoonRise Farms",
       address: "",
       URL: "",
@@ -10,15 +10,25 @@ const initialData = {
       likes: 2,
       marketId: 1,
     },
-    "0": { id: "0", farmName: "Becker Farms", address: "" },
-    "1": { id: "1", farmName: "3 Flock Farm", address: "" },
-    "2": { id: "2", farmName: "Moon Valley Farm", address: "" },
+    "1": { id: "1", farmName: "Becker Farms", address: "" },
+    "2": { id: "2", farmName: "3 Flock Farm", address: "" },
+    "3": { id: "3", farmName: "Moon Valley Farm", address: "" },
   },
   columns: {
     "column-1": {
       id: "column-1",
       title: "Un-mapped Booths",
-      boothIds: ["0", "1", "2"],
+      boothIds: [
+        "0",
+        "1",
+        "2",
+        "3",
+        // "4",
+        // "5",
+        // "6",
+        // "7",
+        // "8",
+      ],
     },
     "column-2": {
       id: "column-2",

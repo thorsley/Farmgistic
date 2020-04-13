@@ -7,7 +7,7 @@ import Column from "./column";
 const Container = styled.div`
   display: flex;
 `;
-let boothData = [];
+// let boothData = [];
 
 class DragnDrop extends React.Component {
   state = initialData;
@@ -23,7 +23,7 @@ class DragnDrop extends React.Component {
     })
       .then((res) => res.json())
       .then(function (data) {
-        console.log(data);
+        // console.log( data)
         return data.map((post) => {
           return {
             id: (post.id - 1).toString(),
@@ -156,7 +156,7 @@ class DragnDrop extends React.Component {
         // onDragUpdate={this.onDragUpdate}
       >
         <button onClick={this.addColumn}>Add 2 Columns</button>
-        <button onClick={this.fetchBooths}>Refresher</button>
+        <button onClick={this.fetchBooths()}>Refresher</button>
         <Container>
           {this.state.columnOrder.map((columnId) => {
             const column = this.state.columns[columnId];
