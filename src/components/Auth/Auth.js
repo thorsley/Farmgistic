@@ -26,19 +26,16 @@ const CustomTableCell = withStyles((theme) => ({
 
 const styles = (theme) => ({
   root: {
-    height: 'fit',
-    maxHeight: '50%',
+    height: "fit",
+    maxHeight: "50%",
     maxWidth: "83%",
     marginTop: theme.spacing.unit * 1,
     overflowX: "auto",
   },
-  table: {
-
-  },
+  table: {},
   head: {
-    backgroundColor: '#1A506B',
-    color: '#E5ED9C'
-
+    backgroundColor: "#1A506B",
+    color: "#E5ED9C",
   },
   row: {
     "&:nth-of-type(odd)": {
@@ -47,68 +44,65 @@ const styles = (theme) => ({
   },
 });
 
-
-
-
 class Auth extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      marketTable: []
+      marketTable: [],
     };
-
   }
 
   componentWillMount() {
-    fetch('http://localhost:3003/market/', {
-        method: 'GET',
-        headers: new Headers({
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODQxMjY2LCJleHAiOjE1ODU5Mjc2NjZ9.gH4nO5LQOEMbbQ62dGYiQb-o2qZyHMbIPuP32lMugd4'
-            // 'Authorization': props.token
-        })
-    }).then ( (res) => res.json())
-    .then ( json => {
-      this.setState({
-        marketTable: json
+    fetch("http://localhost:3003/market/", {
+      method: "GET",
+      headers: new Headers({
+        Authorization: localStorage.token,
+        // 'Authorization': props.token
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        this.setState({
+          marketTable: json,
+        });
+        // console.log(json)
+        console.log(this.state.marketTable);
       })
-      // console.log(json)
-        console.log(this.state.marketTable)
-    }).catch(error => console.error('Error:', error))
-}
+      .catch((error) => console.error("Error:", error));
+  }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
-
-
         <Login loggedIn={this.props.loggedIn} />
         <Signup loggedIn={this.props.loggedIn} />
 
         <br />
         <br />
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
+        <Grid container direction="row" justify="center" alignItems="center">
           <Paper className={classes.root}>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <CustomTableCell className={classes.head}>Market:</CustomTableCell>
-                  <CustomTableCell className={classes.head} align="right">Address:</CustomTableCell>
+                  <CustomTableCell className={classes.head}>
+                    Market:
+                  </CustomTableCell>
+                  <CustomTableCell className={classes.head} align="right">
+                    Address:
+                  </CustomTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.state.marketTable.map(market => (
+                {this.state.marketTable.map((market) => (
                   <TableRow className={classes.row} key={market.id}>
                     <CustomTableCell component="th" scope="row">
                       {market.marketName}
                     </CustomTableCell>
-                    <CustomTableCell align="right">{market.address}</CustomTableCell>
+                    <CustomTableCell align="right">
+                      {market.address}
+                    </CustomTableCell>
                   </TableRow>
                 ))}
               </TableBody>
