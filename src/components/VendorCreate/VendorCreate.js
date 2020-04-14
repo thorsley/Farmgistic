@@ -12,7 +12,7 @@ import lightGreen from '@material-ui/core/colors/lightGreen';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+import VendorCreateDisplay from "./VendorCreateDisplay/VendorCreateDisplay"
 
 import VendorGet from './VendorGet'
 
@@ -102,11 +102,11 @@ class VendorCreate extends React.Component{
         event.preventDefault();
         fetch('http://localhost:3003/booth/add', {
         method: 'POST',
-        body: JSON.stringify( {farmName: this.state.farmName, address: this.state.address, URL: this.state.URL,bio: this.state.bio,atMarket:this.state.atMarket}),
+        body: JSON.stringify( {farmName: this.state.farmName, address: this.state.address, URL: this.state.URL,bio: this.state.bio,}),
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MzUzMDQ3LCJleHAiOjE1ODY0Mzk0NDd9.NNgEmcJfhXRE_Ogu9OC3RpQ3ssIBCv08n1Z_iUWvoZY'
-            // 'Authorization': props.token
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
+            // 'Authorization': localstorage.token
         })  
     }).then((res)=>res.json())
     .then((data)=>{
@@ -204,14 +204,20 @@ class VendorCreate extends React.Component{
               value="false"
               checked={ atMarket === false}/>
           </RadioGroup> */}
-        <Button onClick={() => window.location.reload(false)}  type="submit" variant="contained" color="primary" >
+          <Button onClick={()=> window.location.reload(false)}  type="submit" variant="contained" color="primary" >
         Submit
       </Button>
+       
       </form>
+     
+      
+
 
       </CardContent>
         </Card>
         </Grid>
+
+        <VendorCreateDisplay/>
             </>
         )
     }
