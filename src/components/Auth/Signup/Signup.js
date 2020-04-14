@@ -133,8 +133,10 @@ class Signup extends Component {
                 className={classes.textField}
                 value={this.firstName}
                 onChange={this.handleFirstName}
+                autoComplete="off"
                 margin="normal"
                 variant="outlined"
+                
               />
               <TextField
                 id="outlined-name"
@@ -142,8 +144,10 @@ class Signup extends Component {
                 value={this.lastName}
                 onChange={this.handleLastName}
                 className={classes.textField}
+                autoComplete="off"
                 margin="normal"
                 variant="outlined"
+                
               />
               <TextField
                 id="outlined-email-input"
@@ -151,11 +155,13 @@ class Signup extends Component {
                 className={classes.textField}
                 value={this.email}
                 onChange={this.handleEmail}
+                autoComplete="off"
                 type="email"
                 name="email"
-                autoComplete="off"
+                
                 margin="normal"
                 variant="outlined"
+                
               />
               <TextField
                 id="outlined-password-input"
@@ -163,10 +169,12 @@ class Signup extends Component {
                 className={classes.textField}
                 value={this.password}
                 onChange={this.handlePassword}
+                autoComplete="off"
                 type="password"
                 autoComplete="current-password"
                 margin="normal"
                 variant="outlined"
+                
               />
               <br />
               <Button

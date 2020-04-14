@@ -9,7 +9,6 @@ const Container = styled.div`
     border: 10px solid lightgrey:
     border-radius: 2px;
     width: fit;
-
     display: flex;
     flex-direction: column;
 `;
@@ -21,7 +20,6 @@ const BoothList = styled.div`
   background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "white")};
   flex-grow: 1;
   min-height: 200px;
-
   // display: flex;
 `;
 
