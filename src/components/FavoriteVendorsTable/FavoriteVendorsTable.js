@@ -19,7 +19,7 @@ class FavoriteVendorsTable extends React.Component{
         fetch('http://localhost:3003/favorite/', {
             method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2Nzg3OTY3LCJleHAiOjE1ODY4NzQzNjd9.zSIEvfm8OiJVciBG3cbwyfPeAlchlSYOiDe-ytYjK74'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2ODc0NDE1LCJleHAiOjE1ODY5NjA4MTV9.v_2HPwpnV1N9ijY7T8oVB_tan534CbIGBMTS-i9WzHI'
                 // 'Authorization': props.token
             })
         }).then ( (res) => res.json())
