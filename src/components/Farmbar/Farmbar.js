@@ -8,6 +8,7 @@ import AdminContent from "../AdminContent/AdminContent";
 import VendorCreate from "../VendorCreate/VendorCreate";
 import VendorCreateDisplay from "../VendorCreate/VendorCreateDisplay/VendorCreateDisplay";
 import Trevor from "./Trevor/Modal";
+import ABModal from './AB/Modal';
 
 class Farmbar extends React.Component {
   constructor(props) {
@@ -117,7 +118,7 @@ class Farmbar extends React.Component {
                       aria-labelledby="navbarDropdown"
                     >
                       <Link className="dropdown-item" to="/ab">
-                        AB
+                        <ABModal />
                       </Link>
                       <div className="dropdown-divider"></div>
                       <Link className="dropdown-item" to="/trevor">
@@ -157,7 +158,7 @@ class Farmbar extends React.Component {
             <Route path="/">
               <Home />
             </Route>
-            <Route path="/ab">{/* <AB /> */}</Route>
+            {/* <Route path="/ab"><ABModal /></Route> */}
             <Route path="/trevor">{/* <Trevor/> */}</Route>
             <Route path="/daniel">{/* <Daniel /> */}</Route>
           </Switch>
