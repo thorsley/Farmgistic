@@ -43,8 +43,7 @@ class Market extends React.Component {
     fetch("http://localhost:3003/market/", {
       method: "GET",
       headers: new Headers({
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1ODQxMjY2LCJleHAiOjE1ODU5Mjc2NjZ9.gH4nO5LQOEMbbQ62dGYiQb-o2qZyHMbIPuP32lMugd4",
+        Authorization: localStorage.token,
         // 'Authorization': props.token
       }),
     })

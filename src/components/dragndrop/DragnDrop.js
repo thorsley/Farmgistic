@@ -16,9 +16,8 @@ class DragnDrop extends React.Component {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2Nzg5MDg0LCJleHAiOjE1ODY4NzU0ODR9.WhaeuutL5ij9sk_4ANCiAJkfk7yKUBrz1F5B4K6lb3k",
-        // 'Authorization': props.token
+
+        Authorization: localStorage.token,
       }),
     })
       .then((res) => res.json())
