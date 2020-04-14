@@ -1,25 +1,24 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import './FavoriteVendorsTable.css';
+import React from "react";
+import Card from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
+import CardContent from "@material-ui/core/CardContent";
+import "./FavoriteVendorsTable.css";
 
-class FavoriteVendorsTable extends React.Component{
-    constructor(props) {
-        super(props);
-        // console.log(props);
-        this.state = {
-          favVendors: [],
-          // token: this.props.token
-        };
-      }
-    
+class FavoriteVendorsTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      favVendors: [],
+      // token: this.props.token
+    };
+  }
 
     componentWillMount() {
         fetch('http://localhost:3003/favorite/', {
             method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MjY1Mzk3LCJleHAiOjE1ODYzNTE3OTd9.ZVWZ9k6N-POXifa5dIRkTPNyLb_6Ze0-x7pCAGJoXrk'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2ODc0NDE1LCJleHAiOjE1ODY5NjA4MTV9.v_2HPwpnV1N9ijY7T8oVB_tan534CbIGBMTS-i9WzHI'
+                // Authorization: localStorage.token,
                 // 'Authorization': props.token
             })
         }).then ( (res) => res.json())

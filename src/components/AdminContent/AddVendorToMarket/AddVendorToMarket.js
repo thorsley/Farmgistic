@@ -1,4 +1,5 @@
 import React from 'react';
+import DragnDrop from '../../dragndrop/DragnDrop';
 
 
 class AddVendorToMarket extends React.Component {
@@ -8,23 +9,7 @@ class AddVendorToMarket extends React.Component {
 
     handleAdd = e => {
         
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:3003/booth/', {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg1NzYzNDYxLCJleHAiOjE1ODU4NDk4NjF9.PCJPloDEWSsMahnTyw6Ip4U6Ewq8VNuly7SVvX1IEwY'
-                // 'Authorization': props.token
-            })
-        }).then ( (res) => res.json())
-        .then ( (data) => {
-            console.log(data);
-            
-        }).catch(error => console.error('Error:', error))
-    }
-    
+    }    
 
 
     render() {
@@ -37,7 +22,8 @@ class AddVendorToMarket extends React.Component {
                 <br />
                 <br />
                 <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '.4em', margin: '0 .5em', borderRadius: '.1em'}}>Market Mapper</h1>
-                <p>Drag and drop booths from the table above, to the grid below!</p>
+                <p>Drag and drop booths from the table on the left, to the columns on the right!</p>
+                <DragnDrop />
             </div>
         )
     }

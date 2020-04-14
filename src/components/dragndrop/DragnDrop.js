@@ -10,15 +10,28 @@ const Container = styled.div`
 // let boothData = [];
 
 class DragnDrop extends React.Component {
-   state = initialData;
-    componentDidMount() {
+  constructor(props) {
+    super(props)
+    // this.state = initialData;
+    this.state = {
+      ...initialData,
+      isLoading: false,
+    }
+  }
+    componentWillMount() {
+      this.setState({isLoading: true})
     fetch("http://localhost:3003/booth/", {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
+<<<<<<< HEAD
         Authorization:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2Nzg3OTY3LCJleHAiOjE1ODY4NzQzNjd9.zSIEvfm8OiJVciBG3cbwyfPeAlchlSYOiDe-ytYjK74",
         // 'Authorization': props.token
+=======
+
+        Authorization: localStorage.token,
+>>>>>>> ce1b260dedb02053de147c4803b3366f459697ca
       }),
     })
       .then((res) => res.json())
@@ -40,34 +53,30 @@ class DragnDrop extends React.Component {
           // boothData = data;
         })
         .then(data => {
-            console.log(data)
+            console.log('data from fetch', data)
             // this.state.booths = data
             this.setState({
                 ...this.state,
                columns: {
                      ...this.state.columns,
-                    boothIds: data.map((boothId, key) => boothId.id
+                     
+                    boothIds: data.map((booth) => booth.id
                       )
           },
                   booths: 
                     data
                   ,
             })
-            console.log(this.state)
+            console.log('columnOrder', this.state.columnOrder)
+            console.log('this.state.booths', this.state.columns.boothIds)
+            return true
+        }).then(() => {
+          this.setState({isLoading:false})
         })
-      //   .then({this.setState({
-      //     ...this.state,
-      //     columns: {
-      //       boothIds: this.state.booths.id
-      //     }
-      //   })
-      // })
       .catch((error) => console.error("Error:", error));
   }
   
-
   onDragEnd = (result) => {
-
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -172,7 +181,7 @@ class DragnDrop extends React.Component {
         <button onClick={this.addColumn}>Add 2 Columns</button>
         {/* <button onClick={this.fetchBooths()}>Refresher</button> */}
         <Container>
-          {this.state.columnOrder.map((columnId) => {
+          {!this.state.isLoading ? this.state.columnOrder.map((columnId) => {
             const column = this.state.columns[columnId];
             const booth = column.boothIds.map(
               (boothId) => this.state.booths[boothId]
@@ -183,10 +192,10 @@ class DragnDrop extends React.Component {
                 key={column.id}
                 column={column}
                 booth={booth}
-                // boothData={boothData}
+                // state={this.state}
               />
             );
-          })}
+          }) : <p>LOADING</p>}
         </Container>
       </DragDropContext>
     );
