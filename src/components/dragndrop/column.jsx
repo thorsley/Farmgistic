@@ -43,18 +43,13 @@ export default class Column extends React.Component {
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
             >
-              {this.props.booth.length ? (
-                this.props.booth.map((booth, index) => (
-                  <Booth
-                    key={booth.id}
-                    booth={booth}
-                    // boothData={boothData}
-                    index={index}
-                  />
-                ))
-              ) : (
-                <span></span>
-              )}
+              {this.props.booth.length ? this.props.booth.map((booth, index) => (
+                <Booth
+                  key={booth.id}
+                  booth={booth}
+                  index={index}
+                />
+              )) : <span></span>}
               {provided.placeholder}
             </BoothList>
           )}

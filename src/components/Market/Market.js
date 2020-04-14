@@ -36,6 +36,7 @@ class Market extends React.Component {
       marketTable: [],
       searchTerm: "",
       marketID: 0,
+      marketSize: "",
     };
     this.searchUpdated = this.searchUpdated.bind(this);
   }
@@ -51,8 +52,6 @@ class Market extends React.Component {
       .then((json) => {
         this.setState({
           marketTable: json,
-          marketID: 0,
-          marketSize: "",
         });
       })
       .catch((error) => console.error("Error:", error));
