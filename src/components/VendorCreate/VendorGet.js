@@ -2,12 +2,44 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import SearchInput, {createFilter} from 'react-search-input'
 import './vendorget.css'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: '#1A506B',
+        color: '#E5ED9C'
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
+
+  const styles = theme => ({
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+    },
+    row: {
+      '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.background.default,
+      },
+    },
+  });
 
 
 const KEYS_TO_FILTERS = ['id','marketName', 'address', 'size']
 
 class  VendorGet extends React.Component {
-    constructor(props) {
+    
+    constructor(props) { 
         super(props);
         this.state = {
             data:[],
@@ -22,7 +54,7 @@ class  VendorGet extends React.Component {
             method:'GET',
             headers:new Headers({ 
                 'Content-Type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MzUzMDQ3LCJleHAiOjE1ODY0Mzk0NDd9.NNgEmcJfhXRE_Ogu9OC3RpQ3ssIBCv08n1Z_iUWvoZY'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8'
             })
         }).then((response)=>response.json())
         .then((findresponse)=>{
@@ -40,37 +72,44 @@ class  VendorGet extends React.Component {
         return (  
             <div> 
                 <Container>
-            {/* <input type="text" placeholder="Search.." onChange={this.onChange}></input>
-            <button type="submit">Search button</button> */}
-            <SearchInput className="search-input" onChange={this.searchUpdated}/>
-
-
-        <table className='test'>
-        <thead>
-            <tr>
-                <th>Market Name</th>
-                <th>Address</th>
-                <th>Size</th>
-            </tr>
-        </thead>
+            <SearchInput style={{borderRadius: '10px', marginTop:'5em'}}placeholder="search" className="search-input" onChange={this.searchUpdated}/>
+            <br/>
+            <Paper >
+            <Table>
+            <TableHead>
+            <TableRow>
+            <CustomTableCell align="right">Market Name</CustomTableCell>
+            <CustomTableCell align="right">Address</CustomTableCell>
+            <CustomTableCell align="right">Size</CustomTableCell>
+            </TableRow>
+            </TableHead>
         {filterdMarkets.map((findresponses,index)=>
         (
-        <tbody key={index}>
-           <tr>
-            <td>{findresponses.marketName}</td>
-           <td>{findresponses.address}</td>
-           <td>{findresponses.size}</td>
-           </tr>
-        </tbody>
+            <TableBody key={index}>
+           <TableRow>
+           <CustomTableCell align="right"> {findresponses.marketName}</CustomTableCell>
+           <CustomTableCell align="right">{findresponses.address}</CustomTableCell>
+           <CustomTableCell align="right">{findresponses.size}</CustomTableCell>
+           </TableRow>
+           </TableBody>
+        
         ))}
-        </table>
+       </Table>
+        </Paper>
                 </Container>
             
         </div>
         )
     }
+
     searchUpdated (term) {
         this.setState({searchTerm: term})}
 }
- 
-export default VendorGet;
+
+VendorGet.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
+
+export default withStyles(styles) (VendorGet);
+

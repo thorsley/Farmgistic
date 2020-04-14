@@ -8,14 +8,11 @@ const Container = styled.div`
   padding: 4px;
   margin-bottom: 8px;
   background-color: ${(props) => (props.isDragging ? "lightgreen" : "inherit")};
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 120px;
   width: 120px;
-
   &:focus {
     outline: none;
     border-color: red;

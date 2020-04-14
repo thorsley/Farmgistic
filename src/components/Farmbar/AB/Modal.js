@@ -1,17 +1,49 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
-const JSX_MODAL = (
-  <div className="ui dimmer modals visible active">  
-    <div className="ui standard modal visible active">
-      THIS IS SOME TEXT IN THE MODAL // add some UI features here
-    </div>
-  </div>
-);
+import { Modal, Button } from 'antd';
 
+class App extends React.Component {
+  state = { visible: false };
 
-function Modal(props) {
-  return ReactDOM.createPortal(JSX_MODAL, document.querySelector("#modal"));
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <Button type="primary" onClick={this.showModal}>
+          Open Modal
+        </Button>
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+      </div>
+    );
+  }
 }
 
 
