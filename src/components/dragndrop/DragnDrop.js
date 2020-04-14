@@ -10,51 +10,47 @@ const Container = styled.div`
 // let boothData = [];
 
 class DragnDrop extends React.Component {
-   state = initialData;
-    componentDidMount() {
+  state = initialData;
+  componentDidMount() {
     fetch("http://localhost:3003/booth/", {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2Nzg3OTY3LCJleHAiOjE1ODY4NzQzNjd9.zSIEvfm8OiJVciBG3cbwyfPeAlchlSYOiDe-ytYjK74",
-        // 'Authorization': props.token
+
+        Authorization: localStorage.token,
       }),
     })
       .then((res) => res.json())
-      .then(function(data) {
-          // console.log( data)
-          return data.map(post => {
-              return {
-                  id: (post.id - 1).toString(),
-                  farmName: post.farmName,
-                  address: post.address,
-                  URL: post.URL,
-                  bio: post.bio,
-                  atMarket: post.atMarket,
-                  likes: post.likes,
-                  marketId: post.marketId
-              };
-          });
-          console.log(data);
-          // boothData = data;
-        })
-        .then(data => {
-            console.log(data)
-            // this.state.booths = data
-            this.setState({
-                ...this.state,
-               columns: {
-                     ...this.state.columns,
-                    boothIds: data.map((boothId, key) => boothId.id
-                      )
+      .then(function (data) {
+        // console.log( data)
+        return data.map((post) => {
+          return {
+            id: (post.id - 1).toString(),
+            farmName: post.farmName,
+            address: post.address,
+            URL: post.URL,
+            bio: post.bio,
+            atMarket: post.atMarket,
+            likes: post.likes,
+            marketId: post.marketId,
+          };
+        });
+        console.log(data);
+        // boothData = data;
+      })
+      .then((data) => {
+        console.log(data);
+        // this.state.booths = data
+        this.setState({
+          ...this.state,
+          columns: {
+            ...this.state.columns,
+            boothIds: data.map((boothId, key) => boothId.id),
           },
-                  booths: 
-                    data
-                  ,
-            })
-            console.log(this.state)
-        })
+          booths: data,
+        });
+        console.log(this.state);
+      })
       //   .then({this.setState({
       //     ...this.state,
       //     columns: {
@@ -64,10 +60,8 @@ class DragnDrop extends React.Component {
       // })
       .catch((error) => console.error("Error:", error));
   }
-  
 
   onDragEnd = (result) => {
-
     const { destination, source, draggableId } = result;
 
     if (!destination) {

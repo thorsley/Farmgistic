@@ -24,7 +24,6 @@ const BoothList = styled.div`
 `;
 
 export default class Column extends React.Component {
-
   render() {
     {
       console.log(this.props);
@@ -44,14 +43,18 @@ export default class Column extends React.Component {
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
             >
-              {this.props.booth.length ? this.props.booth.map((booth, index) => (
-                <Booth
-                  key={booth.id}
-                  booth={booth}
+              {this.props.booth.length ? (
+                this.props.booth.map((booth, index) => (
+                  <Booth
+                    key={booth.id}
+                    booth={booth}
                     // boothData={boothData}
-                  index={index}
-                />
-              )) : <span></span>}
+                    index={index}
+                  />
+                ))
+              ) : (
+                <span></span>
+              )}
               {provided.placeholder}
             </BoothList>
           )}
