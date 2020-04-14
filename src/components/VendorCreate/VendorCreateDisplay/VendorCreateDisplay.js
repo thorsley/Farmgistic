@@ -17,8 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import blue from '@material-ui/core/colors/blue';
 import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
-
-
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 const primary = blue[800];
 // modal function
@@ -117,7 +116,7 @@ class VendorDisplay extends React.Component {
           method:'GET',
           headers:new Headers({ 
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8'
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
           })
         }).then((res)=>res.json())
         .then((booth)=>{
@@ -134,7 +133,7 @@ class VendorDisplay extends React.Component {
         method:'DELETE',
         headers:new Headers({ 
           'Content-Type': 'application/json',
-          'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8'
+          'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
         })
       })
     }
@@ -172,9 +171,9 @@ class VendorDisplay extends React.Component {
       </IconButton></Tooltip>
 
       {/* delete button doesnt refresh after click */}
-      {/* <Tooltip title="Delete"><IconButton aria-label="delete"  onClick={ ()=> {this.deleteVendor(booths)}}variant="contained" color="primary" className={classes.button}>
-      <DeleteOutlinedIcon className={classes.icon} />
-        </IconButton></Tooltip> */}
+      <Tooltip title="Delete"><IconButton aria-label="delete"  onClick={ ()=> {this.deleteVendor(booths)}}variant="contained" color="primary" className={classes.button}>
+      <DeleteOutlinedIcon  onClick={()=> window.location.reload(false)} />
+        </IconButton ></Tooltip>
         </CustomTableCell>
       </TableRow>
              </TableBody>
