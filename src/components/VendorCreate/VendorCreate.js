@@ -149,6 +149,7 @@ class VendorCreate extends React.Component{
           value={this.farmName}
           margin="normal"
           onChange={this.handleFarmName}
+          autoComplete="off"
         />
 
         <TextField
@@ -158,6 +159,7 @@ class VendorCreate extends React.Component{
           value={this.address}
           margin="normal"
           onChange={this.handleAddress}
+          autoComplete="off"
         />
 
         <TextField
@@ -167,6 +169,7 @@ class VendorCreate extends React.Component{
           value={this.URL}
           margin="normal"
           onChange={this.handleUrl}
+          autoComplete="off"
         />
 
             <TextField
@@ -176,6 +179,7 @@ class VendorCreate extends React.Component{
           value={this.bio}
           margin="normal"
           onChange={this.handleBio}
+          autoComplete="off"
         />
 
         {/* <RadioGroup

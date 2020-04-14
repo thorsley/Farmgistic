@@ -24,9 +24,8 @@ class DragnDrop extends React.Component {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2Nzg3OTY3LCJleHAiOjE1ODY4NzQzNjd9.zSIEvfm8OiJVciBG3cbwyfPeAlchlSYOiDe-ytYjK74",
-        // 'Authorization': props.token
+
+        Authorization: localStorage.token,
       }),
     })
       .then((res) => res.json())
@@ -72,7 +71,6 @@ class DragnDrop extends React.Component {
   }
   
   onDragEnd = (result) => {
-
     const { destination, source, draggableId } = result;
 
     if (!destination) {

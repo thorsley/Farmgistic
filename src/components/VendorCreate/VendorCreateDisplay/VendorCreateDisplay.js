@@ -17,7 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import blue from '@material-ui/core/colors/blue';
 import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+
 
 
 const primary = blue[800];
@@ -38,8 +38,8 @@ function getModalStyle() {
 //table styling
 const CustomTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: primary,
-    color: theme.palette.common.white,
+    backgroundColor: '#C9E3F2',
+    color: '#656614'
   },
   body: {
     fontSize: 14,
@@ -97,6 +97,7 @@ class VendorDisplay extends React.Component {
             activeItembio:'',
             activeItematMarket:null,
             open: false
+            
         }
     }
     handleOpen = (booths) => {
@@ -116,7 +117,7 @@ class VendorDisplay extends React.Component {
           method:'GET',
           headers:new Headers({ 
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MzUzMDQ3LCJleHAiOjE1ODY0Mzk0NDd9.NNgEmcJfhXRE_Ogu9OC3RpQ3ssIBCv08n1Z_iUWvoZY'
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8'
           })
         }).then((res)=>res.json())
         .then((booth)=>{
@@ -133,7 +134,7 @@ class VendorDisplay extends React.Component {
         method:'DELETE',
         headers:new Headers({ 
           'Content-Type': 'application/json',
-          'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2MzUzMDQ3LCJleHAiOjE1ODY0Mzk0NDd9.NNgEmcJfhXRE_Ogu9OC3RpQ3ssIBCv08n1Z_iUWvoZY'
+          'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8'
         })
       })
     }

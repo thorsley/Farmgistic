@@ -7,15 +7,18 @@ import Market from "../Market/Market";
 import AdminContent from "../AdminContent/AdminContent";
 import VendorCreate from "../VendorCreate/VendorCreate";
 import VendorCreateDisplay from "../VendorCreate/VendorCreateDisplay/VendorCreateDisplay";
+import Trevor from "./Trevor/Modal";
 
 class Farmbar extends React.Component {
   constructor(props) {
     super(props);
+
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.state = {
       collapsed: true,
       collapseDropdown: true,
+      loggedIn: true,
     };
   }
   toggleNavbar() {
@@ -30,8 +33,8 @@ class Farmbar extends React.Component {
   }
   clearStorage() {
     localStorage.clear();
-    // props.loggedIn();
-    this.props.loggedIn();
+
+    // this.props.loggedIn(); // THIS WONT WORK ANYMORE BECAUESE THIS COMPONENT IS NO LONGER A FUNCTIONAL COMPONENT.
   }
   render() {
     const collapsed = this.state.collapsed;
@@ -84,16 +87,19 @@ class Farmbar extends React.Component {
                       Customer
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/vendor">
-                      Vendor
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
-                      Admin
-                    </Link>
-                  </li>
+                  {localStorage.userType === "Vendor" ? (
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/vendor">
+                        Vendor
+                      </Link>
+                    </li>
+                  ) : localStorage.userType === "Admin" ? (
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/admin">
+                        Admin
+                      </Link>
+                    </li>
+                  ) : null}
                   <li className="nav-item dropdown">
                     <a
                       onClick={this.toggleDropdown}
@@ -115,7 +121,7 @@ class Farmbar extends React.Component {
                       </Link>
                       <div className="dropdown-divider"></div>
                       <Link className="dropdown-item" to="/trevor">
-                        Trevor
+                        <Trevor />
                       </Link>
                       <div className="dropdown-divider"></div>
                       <Link className="dropdown-item" to="/daniel">
@@ -152,7 +158,7 @@ class Farmbar extends React.Component {
               <Home />
             </Route>
             <Route path="/ab">{/* <AB /> */}</Route>
-            <Route path="/trevor">{/* <Trevor /> */}</Route>
+            <Route path="/trevor">{/* <Trevor/> */}</Route>
             <Route path="/daniel">{/* <Daniel /> */}</Route>
           </Switch>
         </div>
