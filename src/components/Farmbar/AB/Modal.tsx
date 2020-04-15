@@ -65,8 +65,10 @@ class ABModal extends React.Component<AcceptedProps, BoredState> {
         <Button style={{border: "transparent"}} type="primary" onClick={this.showModal}>
           AB
         </Button>
+        <div style={{zIndex: "unset"}}>
+
         <Modal
-          style={{fontWeight:'bold', color: '#C9E3EE', borderRadius: '3%', backgroundColor: '#656614', marginTop: '-50em',marginLeft: '30em',padding: '6em 9em'}}
+          style={{fontWeight:'bold', color: '#C9E3EE', borderRadius: '3%', backgroundColor: '#656614', marginTop: '-60%',marginLeft: '40%',padding: '2% 4%', border: '2px inset #E5ED9C'}}
           title="Are you Bored?"
           visible={this.state.isVisible}
           onOk={this.handleOk}
@@ -83,6 +85,7 @@ class ABModal extends React.Component<AcceptedProps, BoredState> {
           <p>Would you agree that this activity is {100* (1- this.state.accessibility)}% accessible?</p>
           <br />
         </Modal>
+        </div>
       </div>
     );
   }

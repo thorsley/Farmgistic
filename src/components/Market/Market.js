@@ -21,7 +21,9 @@ const styles = (theme) => ({
     overflowX: "auto",
   },
   table: {
-    minWidth: 369,
+    margin: '1%',
+    width: '100%',
+    // minWidth: 369,
     backgroundColor: " #ECECEC",
     color: "#191919",
   },
@@ -81,8 +83,8 @@ class Market extends React.Component {
             style={{
               backgroundColor: "#C9E3EE",
               color: "#656614",
-              padding: ".4em",
-              margin: "0 .5em",
+              padding: "2%",
+              margin: "0 1%",
               borderRadius: ".1em",
             }}
           >
@@ -143,8 +145,9 @@ class Market extends React.Component {
               </TableBody>
             </Table>
           </Paper>
+          <br />
           <h5 style={{ color: "#E5ED9C" }}>
-            Select View Map to be directed to your Market!
+            Select View Map to be directed to your Market! ^
           </h5>
           <hr style={{ width: "90%" }} />
           <br />
@@ -160,9 +163,10 @@ class Market extends React.Component {
             style={{
               backgroundColor: "#C9E3EE",
               color: "#656614",
-              padding: ".4em",
-              margin: "0 .5em",
+              padding: "2%",
+              margin: "0 1%",
               borderRadius: ".1em",
+              // width: '103%'
             }}
           >
             Your Booths
