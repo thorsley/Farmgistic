@@ -116,7 +116,7 @@ class VendorDisplay extends React.Component {
           method:'GET',
           headers:new Headers({ 
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
+             Authorization: localStorage.token
           })
         }).then((res)=>res.json())
         .then((booth)=>{
@@ -133,7 +133,7 @@ class VendorDisplay extends React.Component {
         method:'DELETE',
         headers:new Headers({ 
           'Content-Type': 'application/json',
-          'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
+          Authorization: localStorage.token,
         })
       })
     }

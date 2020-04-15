@@ -103,8 +103,8 @@ class VendorCreate extends React.Component{
         body: JSON.stringify( {farmName: this.state.farmName, address: this.state.address, URL: this.state.URL,bio: this.state.bio,}),
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
-            // 'Authorization': localstorage.token
+            Authorization: localStorage.token,
+            
         })  
     }).then((res)=>res.json())
     .then((data)=>{

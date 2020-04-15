@@ -69,7 +69,7 @@ class VendorEdit extends Component {
     
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNTg2Nzg2MzA1LCJleHAiOjE1ODY4NzI3MDV9.WrR9KSVvbDKe3cLd1Yp13R7s_Kngxr29EApnoAG_5e8'
+            Authorization: localStorage.token,
         })
     }).then((res)=>res.json())
     .then((data)=>{
