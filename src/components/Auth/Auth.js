@@ -5,12 +5,12 @@ import Login from "./Login/Login";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TableCell from "@material-ui/core/TableCell";
-import Grid from '@material-ui/core/Grid';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Grid from "@material-ui/core/Grid";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 import "./auth.css";
 
@@ -54,7 +54,7 @@ class Auth extends Component {
   }
 
   componentWillMount() {
-    fetch("http://localhost:3003/market/", {
+    fetch("https://dcb-market-server.herokuapp.com/market/", {
       method: "GET",
       headers: new Headers({
         Authorization: localStorage.token,

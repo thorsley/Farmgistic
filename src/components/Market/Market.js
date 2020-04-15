@@ -41,7 +41,7 @@ class Market extends React.Component {
     this.searchUpdated = this.searchUpdated.bind(this);
   }
   componentWillMount() {
-    fetch("http://localhost:3003/market/", {
+    fetch("https://dcb-market-server.herokuapp.com/market/", {
       method: "GET",
       headers: new Headers({
         Authorization: localStorage.token,
