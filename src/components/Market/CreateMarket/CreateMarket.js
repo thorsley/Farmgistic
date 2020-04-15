@@ -53,32 +53,35 @@ class CreateMarket extends React.Component {
                 <br />
                 <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                        <Label htmlFor="marketName" />
+                        <Label style={{color:'#E5ED9C'}} htmlFor="marketName">Name:</Label>
                         <Input 
                         style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}}
                         name="marketName" 
+                        placeholder="Downtown Winter Market"
                         type="text" 
                         value={this.marketName} 
                         onChange={this.handleMarketName} />
                     </FormGroup>
                     <br />
                     <FormGroup>
-                        <Label htmlFor="address" />
+                        <Label style={{color:'#E5ED9C'}} htmlFor="address">Address:</Label>
                         <Input 
                         style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}}
                         type="text" 
                         name="address" 
+                        placeholder="563 West Sunshine Blvd."
                         value={this.address} 
                         onChange={this.handleAddress} >
                         </Input>
                     </FormGroup>
                     <br />
                     <FormGroup>
-                        <Label htmlFor="size" />
+                        <Label style={{color:'#E5ED9C'}} htmlFor="size">Size:</Label>
                         <Input 
                         style={{backgroundColor: '#ECECEC', border: '.2em inset #E5ED9C', borderRadius: '.3em'}}
                         type="text" 
                         name="size" 
+                        placeholder="4 x 5"
                         value={this.size} 
                         onChange={this.handleSize} />
                     </FormGroup>
