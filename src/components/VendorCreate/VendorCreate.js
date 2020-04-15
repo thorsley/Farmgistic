@@ -86,6 +86,19 @@ class VendorCreate extends React.Component{
     handleFarmName = e => {
         this.setState({ farmName: e.target.value})
 
+
+    }
+    handleAddress = e => {
+        this.setState({address: e.target.value})
+    }
+    handleUrl = e => {
+        this.setState({ URL: e.target.value})
+    }
+    handleBio = e => {
+        this.setState({ bio: e.target.value})
+    }
+    
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     fetch("https://dcb-market-server.herokuapp.com/booth/add", {
@@ -104,6 +117,7 @@ class VendorCreate extends React.Component{
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+
         this.setState({
             farmName:this.state.marketName, 
             address:this.state.address, 

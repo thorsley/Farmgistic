@@ -94,6 +94,7 @@ class VendorDisplay extends React.Component {
       activeItematMarket: null,
       open: false,
     };
+
   }
   handleOpen = (booths) => {
     this.setState({

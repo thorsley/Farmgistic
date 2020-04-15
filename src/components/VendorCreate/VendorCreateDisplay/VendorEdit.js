@@ -59,9 +59,9 @@ class VendorEdit extends Component {
     this.setState({ bio: e.target.value });
   };
 
+
   handleSubmit = (event) => {
     event.preventDefault();
-
     fetch(`https://dcb-market-server.herokuapp.com/booth/${this.props.id}`, {
       method: "PUT",
       body: JSON.stringify({

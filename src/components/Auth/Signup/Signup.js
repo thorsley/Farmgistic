@@ -110,9 +110,14 @@ class Signup extends Component {
       <div>
         <Button
           variant="contained"
-          color="primary"
           className={classes.button}
           onClick={this.handleOpen}
+          style={{
+            borderRadius: ".3em",
+            color: "#C9E3EE",
+            backgroundColor: "#656614",
+
+          }}
         >
           Sign Up
         </Button>
@@ -174,9 +179,14 @@ class Signup extends Component {
               <br />
               <Button
                 variant="contained"
-                color="primary"
                 className={classes.button}
                 type="submit"
+                style={{
+                  borderRadius: ".3em",
+                  color: "#C9E3EE",
+                  backgroundColor: "#656614",
+  
+                }}
               >
                 Sign Up
               </Button>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import logo from "../../Assets/FarmGistic logo2.png"
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -67,7 +67,10 @@ class Login extends Component {
     return (
       <div>
         <Grid container direction="column" justify="center" alignItems="center">
-          <h1>Login</h1>
+          <div style={{backgroundColor:"#E5ED9C", borderRadius:"20%", marginTop:"20px", border: "solid 3px #C9E3EE", color: '#656614'}}>
+        <img  src={logo} alt="Logo" />
+           <h1>Farmgistic</h1> 
+           </div>
           <form onSubmit={this.handleSubmit}>
             <TextField
               id="outlined-email-input"
@@ -99,6 +102,12 @@ class Login extends Component {
               variant="contained"
               color="primary"
               className={classes.button}
+              style={{
+                borderRadius: ".3em",
+                color: "#C9E3EE",
+                backgroundColor: "#656614",
+
+              }}
             >
               Login
             </Button>
