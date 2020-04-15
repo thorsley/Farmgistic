@@ -12,7 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import PlotVendors from "../PlotVendors/PlotVendors";
 import FavoriteVendorsTableDisplay from "../FavoriteVendorsTable/FavoriteVendorsTableDisplay";
-
+import  Container  from '@material-ui/core/Container';
 const styles = (theme) => ({
   root: {
     margin: "0 auto",
@@ -66,7 +66,8 @@ class Market extends React.Component {
       createFilter(this.state.searchTerm, KEYS_TO_FILTERS)
     );
     return (
-      <div
+
+      <Container
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(6, 1fr)",
@@ -173,7 +174,7 @@ class Market extends React.Component {
           </h1>
           <FavoriteVendorsTableDisplay />
         </div>
-      </div>
+      </Container>
     );
   }
   searchUpdated(term) {

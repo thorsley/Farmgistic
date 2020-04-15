@@ -39,7 +39,7 @@ class PlotVendors extends React.Component {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2ODc0NDE1LCJleHAiOjE1ODY5NjA4MTV9.v_2HPwpnV1N9ijY7T8oVB_tan534CbIGBMTS-i9WzHI'
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2OTY1OTg2LCJleHAiOjE1ODcwNTIzODZ9.25uKSHARsFGIafLqwh4zVPOOdmOaUQYk_9FvFY5P-nk'
             // 'Authorization': props.token
         })
     }).then ( (res) => res.json())

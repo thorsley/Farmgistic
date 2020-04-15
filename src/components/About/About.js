@@ -15,7 +15,7 @@ function About() {
                     gridRowGap: '1%'}}>
 
         <div style={{gridArea: '1 / 1 / 3 / 6'}}>
-        <h3 style={{color: '#C9E3EE'}}>This application is for vendors, administrators and customers of farmers’ markets. Similar to existing applications that map out booths at a convention, here, market administrators can organize vendors according to their booth location at an in-person event. The vendors will be able to update their booth’s profile, including an inventory for online purchase in version 2.0. Customers can view the customized map by searching all markets registered within the application and save their favorite local foods vendors for reference.</h3>
+        <h3 style={{color: '#C9E3EE'}}>This application is for vendors, administrators and customers of farmers’ markets. Similar to existing applications that map out booths at a convention, here, market administrators can organize vendors according to their booth location at an in-person event. The vendors are able to update their booth’s profile, including an inventory for online purchase in version 2.0. Customers can view the customized map by searching all markets registered within the application and like their favorite local foods vendors for reference.</h3>
         </div>
         <div style={{gridArea: '3 / 3 / 6 / 6', backgroundColor: '#656614', color: '#C9E3EE', borderRadius: '.1em', margin:'1%', padding:'2%', border: '2px inset #E5ED9C', fontWeight: 'bold'}}>
         <br />
@@ -40,12 +40,16 @@ function About() {
         <br />
         <br />
         <ul style={{color: '#C9E3EE'}}>
-            <li>SPLASH SPLASH SPLASH GOALS</li>
-            <li>MORE SPLASHITY GOALS YAY</li>
+            <lh style={{fontWeight: 'bold'}}>Version 2.0 Stretch Goals</lh>
+            <li>Click vendor card to navigate to their external website</li>
+            <li>Allow additional grid arrangments for market plots with asiles</li>
+            <li>Allow uploading of images by User, Vendor, and Admin</li>
+            <li>Convert CSS Grid display to Reactstrap Container, Row, and Column to address responsiveness.</li>
+            <li>Allow Users to make online purchase of goods uploaded by Vendor</li>
         </ul>
         <br />
         <br />
-        <h4 style={{color:"#E5ED9C"}}>Farm•gistic is a small start-up out of Eleven Fifty Academy. Navigate to our Patreon page. </h4>
+        <h5 style={{color:"#E5ED9C"}}>Farm•gistic © is a small start-up out of Eleven Fifty Academy. Navigate to our future Patreon page! </h5>
         </div>
         </div>
         </div>
