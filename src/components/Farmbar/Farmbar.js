@@ -170,14 +170,18 @@ class Farmbar extends React.Component {
 }
 
 function Home() {
-  return <FavoriteVendorsTable />;
+  return (
+    <div style={{margin: '1% 6%'}}>
+      <FavoriteVendorsTable />
+    </div>
+  );
 }
 
 function Users() {
   return (
-    <>
+    <div style={{margin: '1% 6%'}}>
       <Market />
-    </>
+    </div>
   );
 }
 

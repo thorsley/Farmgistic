@@ -23,7 +23,6 @@ class FavoriteVendorsTable extends React.Component {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         this.setState({
           favVendors: json,
         });
@@ -43,8 +42,8 @@ class FavoriteVendorsTable extends React.Component {
             style={{
               backgroundColor: "#C9E3EE",
               color: "#656614",
-              padding: ".4em",
-              margin: "0 3em",
+              padding: "2%",
+              margin: "0 2%",
               borderRadius: ".1em",
             }}
           >
@@ -61,6 +60,7 @@ class FavoriteVendorsTable extends React.Component {
                       justifyContent: "center",
                       margin: ".3em",
                       flex: "13em",
+                      zIndex: "-1",
                     }}
                     key={vendor.booth.likes}
                   >
