@@ -10,26 +10,22 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: '#C9E3F2',
+        color: '#656614'
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
 
-const CustomTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: "#1A506B",
-    color: "#E5ED9C",
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const styles = (theme) => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto",
-  },
-  row: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default,
+  const styles = theme => ({
+    root: {
+      width: '50%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+     
     },
   },
 });
@@ -111,7 +107,6 @@ class VendorGet extends React.Component {
       </div>
     );
   }
-
   searchUpdated(term) {
     this.setState({ searchTerm: term });
   }

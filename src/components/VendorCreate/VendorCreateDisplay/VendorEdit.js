@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 // import { Button } from 'reactstrap';
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-const styles = (theme) => ({
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
+const styles = theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap",
@@ -14,6 +15,7 @@ const styles = (theme) => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
+    
   },
   dense: {
     marginTop: 19,
@@ -25,7 +27,8 @@ const styles = (theme) => ({
     margin: theme.spacing.unit,
   },
   input: {
-    display: "none",
+    display: 'none',
+   
   },
 });
 
@@ -111,25 +114,34 @@ class VendorEdit extends Component {
               onChange={this.handleUrl}
             />
             <TextField
-              label={this.props.farmBio}
-              margin="normal"
-              onChange={this.handleBio}
-            />
-            <br />
-
-            <Button
-              onClick={() => window.location.reload(false)}
-              color="primary"
-              type="submit"
-              variant="contained"
-            >
-              Update
-            </Button>
-          </Grid>
-        </form>
-      </div>
-    );
-  }
+          label={this.props.Name}
+          margin="normal"
+          onChange={this.handleFarmName}
+        />         
+               <TextField
+          label={this.props.farmAddress}
+          margin="normal"
+          onChange={this.handleAddress}
+        />              
+               <TextField
+          label={this.props.farmURL}
+          margin="normal"
+          onChange={this.handleUrl}
+        />
+               <TextField
+          label={this.props.farmBio}
+          margin="normal"
+          onChange={this.handleBio}
+        />
+        <br/>
+        
+        <Button onClick={()=> window.location.reload(false)} style={{borderRadius: ".3em",color: "#C9E3EE",backgroundColor: "#656614",}} type="submit" variant="contained" >Update</Button>
+               </Grid>
+                </form>
+                
+        </div>
+         )
+   }
 }
 
 VendorEdit.propTypes = {

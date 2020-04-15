@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: 10px;
   padding: 4px;
   margin-bottom: 8px;
-  background-color: ${(props) => (props.isDragging ? "lightgreen" : "inherit")};
+  background-color: ${(props) => (props.isDragging ? "#E5ED9C" : "inherit")};
   display: flex;
   justify-content: center;
   align-items: center;

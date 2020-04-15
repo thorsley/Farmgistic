@@ -142,44 +142,43 @@ class VendorDisplay extends React.Component {
     return (
       <div>
         <Paper className={classes.root}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <CustomTableCell>#</CustomTableCell>
-                <CustomTableCell>Farm Name</CustomTableCell>
-                <CustomTableCell>Address</CustomTableCell>
-                <CustomTableCell>URL</CustomTableCell>
-                <CustomTableCell>Bio</CustomTableCell>
-                {/* <CustomTableCell>At Market</CustomTableCell>  */}
-              </TableRow>
-            </TableHead>
+        <Table>
+        <TableHead>
+        <TableRow>
+        <CustomTableCell>#</CustomTableCell>
+          <CustomTableCell>Farm Name</CustomTableCell>
+          <CustomTableCell>Address</CustomTableCell>
+          <CustomTableCell>URL</CustomTableCell>
+          <CustomTableCell>Bio</CustomTableCell>
+          <CustomTableCell></CustomTableCell> 
+          </TableRow>
+        </TableHead>
+     
+       {this.state.data.map((booths,index)=>
+          (
+            <TableBody key={index}>
+          <TableRow>
+          <CustomTableCell align="right">{booths.id}</CustomTableCell>
+             <CustomTableCell align="right">{booths.farmName}</CustomTableCell>
+             <CustomTableCell align="right">{booths.address}</CustomTableCell>
+             <CustomTableCell align="right">{booths.URL}</CustomTableCell>
+             <CustomTableCell align="right">{booths.bio}</CustomTableCell>
+             {/* <CustomTableCell align="right">{booths.atMarket}</CustomTableCell>  */}
+             {/* maps over information and passes the active info to the edit */}
+              <CustomTableCell><Tooltip title="Edit"><IconButton aria-label="Edit" onClick={()=>this.handleOpen(booths)} variant="contained" color="primary" className={classes.button}>
+             <EditIcon className={classes.icon} />
+      </IconButton></Tooltip>
 
-            {this.state.data.map((booths, index) => (
-              <TableBody key={index}>
-                <TableRow>
-                  <CustomTableCell align="right">{booths.id}</CustomTableCell>
-                  <CustomTableCell align="right">
-                    {booths.farmName}
-                  </CustomTableCell>
-                  <CustomTableCell align="right">
-                    {booths.address}
-                  </CustomTableCell>
-                  <CustomTableCell align="right">{booths.URL}</CustomTableCell>
-                  <CustomTableCell align="right">{booths.bio}</CustomTableCell>
-                  {/* <CustomTableCell align="right">{booths.atMarket}</CustomTableCell>  */}
-                  {/* maps over information and passes the active info to the edit */}
-                  <CustomTableCell>
-                    <Tooltip title="Edit">
-                      <IconButton
-                        aria-label="Edit"
-                        onClick={() => this.handleOpen(booths)}
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                      >
-                        <EditIcon className={classes.icon} />
-                      </IconButton>
-                    </Tooltip>
+      {/* delete button */}
+      <Tooltip title="Delete"><IconButton aria-label="delete"  onClick={ ()=> {this.deleteVendor(booths)}}variant="contained" color="primary" className={classes.button}>
+      <DeleteOutlinedIcon  onClick={()=> window.location.reload(false)} />
+        </IconButton ></Tooltip>
+        </CustomTableCell>
+      </TableRow>
+             </TableBody>
+          ))} 
+      </Table>
+      </Paper>
 
                     {/* delete button doesnt refresh after click */}
                     <Tooltip title="Delete">

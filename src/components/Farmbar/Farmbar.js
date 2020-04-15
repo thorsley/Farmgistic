@@ -7,9 +7,12 @@ import Market from "../Market/Market";
 import AdminContent from "../AdminContent/AdminContent";
 import VendorCreate from "../VendorCreate/VendorCreate";
 import VendorCreateDisplay from "../VendorCreate/VendorCreateDisplay/VendorCreateDisplay";
-import Trevor from "./Trevor/Modal";
-import ABModal from "./AB/Modal";
+
+
 import QuizModal from "./Daniel/Modal";
+
+import TacoModel from "./Trevor/Modal";
+import ABModal from './AB/Modal';
 
 class Farmbar extends React.Component {
   constructor(props) {
@@ -123,7 +126,7 @@ class Farmbar extends React.Component {
                       </Link>
                       <div className="dropdown-divider"></div>
                       <Link className="dropdown-item" to="/trevor">
-                        <Trevor />
+                        <TacoModel />
                       </Link>
                       <div className="dropdown-divider"></div>
                       <Link className="dropdown-item" to="/daniel">
@@ -190,7 +193,7 @@ function Vendor() {
     <>
       <p>Search for Markets, create Booth, and Display your vendor card</p>
       <VendorCreate />
-      <VendorCreateDisplay />
+      
     </>
   );
 }
