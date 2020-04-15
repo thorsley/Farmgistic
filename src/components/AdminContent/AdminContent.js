@@ -16,6 +16,7 @@ class VendorContent extends React.Component {
     return (
         <div
         style={{
+            marginLeft: '4%',
             display: 'grid',
             gridTemplateColumns: 'repeat(6, 1fr)',
             gridTemplateRows: '1fr',

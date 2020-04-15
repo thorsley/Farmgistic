@@ -17,10 +17,10 @@ const Title = styled.h3`
 `;
 const BoothList = styled.div`
   padding: 4px;
-  background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "white")};
+  background-color: ${(props) => (props.isDraggingOver ? "#C9E3EE" : "white")};
   flex-grow: 1;
   min-height: 200px;
-  // display: flex;
+  border-radius: 1%;
 `;
 
 export default class Column extends React.Component {

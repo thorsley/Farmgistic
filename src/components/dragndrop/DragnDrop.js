@@ -24,7 +24,8 @@ class DragnDrop extends React.Component {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
-        "npm startAuthorization": localStorage.token,
+        Authorization: localStorage.token,
+
       }),
     })
       .then((res) => res.json())
@@ -171,7 +172,10 @@ class DragnDrop extends React.Component {
         // onDragStart={this.onDragStart}
         // onDragUpdate={this.onDragUpdate}
       >
-        <button onClick={this.addColumn}>Add 2 Columns</button>
+        <button 
+          style={{borderRadius: '.3em', color: '#C9E3EE', backgroundColor: '#656614'}}
+          onClick={this.addColumn}>Add 2 Columns
+        </button>
         {/* <button onClick={this.fetchBooths()}>Refresher</button> */}
         <Container>
           {!this.state.isLoading ? this.state.columnOrder.map((columnId) => {

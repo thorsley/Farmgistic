@@ -19,7 +19,7 @@ const initialData = {
   columns: {
     "column-1": {
       id: "column-1",
-      title: "Un-mapped Booths",
+      title: "Booths",
       // NOTE: Must begin with total possible numerically-ordered booths listed below.
       boothIds: [
         "0",
@@ -42,7 +42,7 @@ const initialData = {
         "17",
         "18",
         "19",
-        "20",
+        // "20",
       ],
     },
     "column-2": {
