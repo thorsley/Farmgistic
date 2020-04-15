@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 //material ui imports
+
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -85,30 +86,24 @@ class VendorCreate extends React.Component{
     handleFarmName = e => {
         this.setState({ farmName: e.target.value})
 
-    }
-    handleAddress = e => {
-        this.setState({address: e.target.value})
-    }
-    handleUrl = e => {
-        this.setState({ URL: e.target.value})
-    }
-    handleBio = e => {
-        this.setState({ bio: e.target.value})
-    }
-    
-    handleSubmit = (event)=> {
-        event.preventDefault();
-        fetch('http://localhost:3003/booth/add', {
-        method: 'POST',
-        body: JSON.stringify( {farmName: this.state.farmName, address: this.state.address, URL: this.state.URL,bio: this.state.bio,}),
-        headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNTg2ODkwMjEzLCJleHAiOjE1ODY5NzY2MTN9.PRrFojKhrcrPn0QwsdpzgcRFTQmhXAjHnnBSn0i1GtY'
-            // 'Authorization': localstorage.token
-        })  
-    }).then((res)=>res.json())
-    .then((data)=>{
-        console.log(data)
+  handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("https://dcb-market-server.herokuapp.com/booth/add", {
+      method: "POST",
+      body: JSON.stringify({
+        farmName: this.state.farmName,
+        address: this.state.address,
+        URL: this.state.URL,
+        bio: this.state.bio,
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: localStorage.token,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         this.setState({
             farmName:this.state.marketName, 
             address:this.state.address, 
@@ -238,7 +233,7 @@ class VendorCreate extends React.Component{
 }
 
 VendorCreate.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+  classes: PropTypes.object.isRequired,
+};
 
-export default withStyles(styles)  (VendorCreate);
+export default withStyles(styles)(VendorCreate);

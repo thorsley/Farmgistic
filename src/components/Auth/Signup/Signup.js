@@ -83,7 +83,7 @@ class Signup extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.props);
-    fetch("http://localhost:3003/auth/signup", {
+    fetch("https://dcb-market-server.herokuapp.com/auth/signup", {
       method: "POST",
       body: JSON.stringify({
         firstName: this.state.firstName,
@@ -136,7 +136,6 @@ class Signup extends Component {
                 autoComplete="off"
                 margin="normal"
                 variant="outlined"
-                
               />
               <TextField
                 id="outlined-name"
@@ -147,7 +146,6 @@ class Signup extends Component {
                 autoComplete="off"
                 margin="normal"
                 variant="outlined"
-                
               />
               <TextField
                 id="outlined-email-input"
@@ -158,10 +156,8 @@ class Signup extends Component {
                 autoComplete="off"
                 type="email"
                 name="email"
-                
                 margin="normal"
                 variant="outlined"
-                
               />
               <TextField
                 id="outlined-password-input"
@@ -174,7 +170,6 @@ class Signup extends Component {
                 autoComplete="current-password"
                 margin="normal"
                 variant="outlined"
-                
               />
               <br />
               <Button

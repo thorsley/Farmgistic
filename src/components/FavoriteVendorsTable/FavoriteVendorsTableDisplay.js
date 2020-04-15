@@ -1,26 +1,25 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import './FavoriteVendorsTable.css';
+import React from "react";
+import Card from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
+import CardContent from "@material-ui/core/CardContent";
+import "./FavoriteVendorsTable.css";
 
-class FavoriteVendorsTableDisplay extends React.Component{
-    constructor(props) {
-        super(props);
-        // console.log(props);
-        this.state = {
-          favVendors: [],
-          // token: this.props.token
-        };
-      }
-    
+class FavoriteVendorsTableDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log(props);
+    this.state = {
+      favVendors: [],
+      // token: this.props.token
+    };
+  }
+
 
     componentWillMount() {
-        fetch('http://localhost:3003/favorite/', {
-            method: 'GET',
+ fetch("https://dcb-market-server.herokuapp.com/favorite/", {
+   method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2OTY1OTg2LCJleHAiOjE1ODcwNTIzODZ9.25uKSHARsFGIafLqwh4zVPOOdmOaUQYk_9FvFY5P-nk'
-                // 'Authorization': localStorage.token
+               'Authorization': localStorage.token
             })
         }).then ( (res) => res.json())
         .then ( json => {
@@ -63,6 +62,7 @@ class FavoriteVendorsTableDisplay extends React.Component{
             </>
         )
     }
+
 }
 
 export default FavoriteVendorsTableDisplay;

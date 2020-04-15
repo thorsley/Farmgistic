@@ -7,20 +7,19 @@ import Column from "./column";
 const Container = styled.div`
   display: flex;
 `;
-// let boothData = [];
 
 class DragnDrop extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     // this.state = initialData;
     this.state = {
       ...initialData,
       isLoading: false,
-    }
+    };
   }
-    componentWillMount() {
-      this.setState({isLoading: true})
-    fetch("http://localhost:3003/booth/", {
+  componentWillMount() {
+    this.setState({ isLoading: true });
+    fetch("https://dcb-market-server.herokuapp.com/booth/", {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -29,47 +28,45 @@ class DragnDrop extends React.Component {
       }),
     })
       .then((res) => res.json())
-      .then(function(data) {
-          // console.log( data)
-          return data.map(post => {
-              return {
-                  id: (post.id - 1).toString(),
-                  farmName: post.farmName,
-                  address: post.address,
-                  URL: post.URL,
-                  bio: post.bio,
-                  atMarket: post.atMarket,
-                  likes: post.likes,
-                  marketId: post.marketId
-              };
-          });
-          console.log(data);
-          // boothData = data;
-        })
-        .then(data => {
-            console.log('data from fetch', data)
-            // this.state.booths = data
-            this.setState({
-                ...this.state,
-               columns: {
-                     ...this.state.columns,
-                     
-                    boothIds: data.map((booth) => booth.id
-                      )
+      .then(function (data) {
+        // console.log( data)
+        return data.map((post) => {
+          return {
+            id: (post.id - 1).toString(),
+            farmName: post.farmName,
+            address: post.address,
+            URL: post.URL,
+            bio: post.bio,
+            atMarket: post.atMarket,
+            likes: post.likes,
+            marketId: post.marketId,
+          };
+        });
+        console.log(data);
+        // boothData = data;
+      })
+      .then((data) => {
+        console.log("data from fetch", data);
+        // this.state.booths = data
+        this.setState({
+          ...this.state,
+          columns: {
+            ...this.state.columns,
+
+            boothIds: data.map((booth) => booth.id),
           },
-                  booths: 
-                    data
-                  ,
-            })
-            console.log('columnOrder', this.state.columnOrder)
-            console.log('this.state.booths', this.state.columns.boothIds)
-            return true
-        }).then(() => {
-          this.setState({isLoading:false})
-        })
+          booths: data,
+        });
+        console.log("columnOrder", this.state.columnOrder);
+        console.log("this.state.booths", this.state.columns.boothIds);
+        return true;
+      })
+      .then(() => {
+        this.setState({ isLoading: false });
+      })
       .catch((error) => console.error("Error:", error));
   }
-  
+
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
@@ -178,21 +175,25 @@ class DragnDrop extends React.Component {
         </button>
         {/* <button onClick={this.fetchBooths()}>Refresher</button> */}
         <Container>
-          {!this.state.isLoading ? this.state.columnOrder.map((columnId) => {
-            const column = this.state.columns[columnId];
-            const booth = column.boothIds.map(
-              (boothId) => this.state.booths[boothId]
-            );
+          {!this.state.isLoading ? (
+            this.state.columnOrder.map((columnId) => {
+              const column = this.state.columns[columnId];
+              const booth = column.boothIds.map(
+                (boothId) => this.state.booths[boothId]
+              );
 
-            return (
-              <Column
-                key={column.id}
-                column={column}
-                booth={booth}
-                // state={this.state}
-              />
-            );
-          }) : <p>LOADING</p>}
+              return (
+                <Column
+                  key={column.id}
+                  column={column}
+                  booth={booth}
+                  // state={this.state}
+                />
+              );
+            })
+          ) : (
+            <p>LOADING</p>
+          )}
         </Container>
       </DragDropContext>
     );
