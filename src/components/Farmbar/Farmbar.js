@@ -8,7 +8,8 @@ import AdminContent from "../AdminContent/AdminContent";
 import VendorCreate from "../VendorCreate/VendorCreate";
 import VendorCreateDisplay from "../VendorCreate/VendorCreateDisplay/VendorCreateDisplay";
 import Trevor from "./Trevor/Modal";
-import ABModal from './AB/Modal';
+import ABModal from "./AB/Modal";
+import QuizModal from "./Daniel/Modal";
 
 class Farmbar extends React.Component {
   constructor(props) {
@@ -126,7 +127,7 @@ class Farmbar extends React.Component {
                       </Link>
                       <div className="dropdown-divider"></div>
                       <Link className="dropdown-item" to="/daniel">
-                        Daniel
+                        <QuizModal />
                       </Link>
                     </div>
                   </li>
