@@ -13,6 +13,7 @@ const Container = styled.div`
   align-items: center;
   height: 120px;
   width: 120px;
+  color: #191919;
   &:focus {
     outline: none;
     border-color: red;
