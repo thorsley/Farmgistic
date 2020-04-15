@@ -43,7 +43,7 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3003/auth/login", {
+    fetch("https://dcb-market-server.herokuapp.com/auth/login", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,

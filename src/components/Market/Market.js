@@ -43,7 +43,7 @@ class Market extends React.Component {
     this.searchUpdated = this.searchUpdated.bind(this);
   }
   componentWillMount() {
-    fetch("http://localhost:3003/market/", {
+    fetch("https://dcb-market-server.herokuapp.com/market/", {
       method: "GET",
       headers: new Headers({
         Authorization: localStorage.token,
@@ -118,11 +118,11 @@ class Market extends React.Component {
                 {filteredMarkets.map((market) => {
                   return (
                     <TableRow key={market.id}>
-                      <TableCell component="th" scope="row">
+                      <TableCell style={{fontWeight: 'bold'}} component="th" scope="row">
                         {market.marketName}
                       </TableCell>
-                      <TableCell align="right">{market.address}</TableCell>
-                      <TableCell align="right">{market.size}</TableCell>
+                      <TableCell style={{fontWeight: 'bold'}} align="right">{market.address}</TableCell>
+                      <TableCell style={{fontWeight: 'bold'}} align="right">{market.size}</TableCell>
                       <TableCell align="right">
                         <button
                           style={{
