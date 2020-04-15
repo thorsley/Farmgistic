@@ -17,8 +17,8 @@ class FavoriteVendorsTable extends React.Component {
         fetch('http://localhost:3003/favorite/', {
             method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2ODc0NDE1LCJleHAiOjE1ODY5NjA4MTV9.v_2HPwpnV1N9ijY7T8oVB_tan534CbIGBMTS-i9WzHI'
-                // Authorization: localStorage.token,
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg2OTY1OTg2LCJleHAiOjE1ODcwNTIzODZ9.25uKSHARsFGIafLqwh4zVPOOdmOaUQYk_9FvFY5P-nk'
+                // 'Authorization': localStorage.token,
                 // 'Authorization': props.token
             })
         }).then ( (res) => res.json())
@@ -34,12 +34,12 @@ class FavoriteVendorsTable extends React.Component {
             <div className='scroll' style={{justifyContent: 'center', overflow: 'scroll'}} >
                 <br />
                 <br />
-                <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '.4em', margin: '0 3em', borderRadius: '.1em'}}>Favorite Farm Booths</h1>
+                <h1 style={{backgroundColor: '#C9E3EE', color:'#656614', padding: '2%', margin: '0 2%', borderRadius: '.1em'}}>Favorite Farm Booths</h1>
                 <br />
                 <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 {this.state.favVendors.sort((a, b) => b.booth.likes - a.booth.likes).map((vendor) => {
                     return (
-                        <Card style={{justifyContent: 'center', margin: '.3em', flex: '13em'}} key={vendor.booth.likes}>
+                        <Card style={{justifyContent: 'center', margin: '.3em', flex: '13em', zIndex:'-1'}} key={vendor.booth.likes}>
                             <CardContent>
                                 <Typography className="titleCard" variant="h5" component="h2">
                                     {vendor.booth.farmName}
