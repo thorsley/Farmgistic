@@ -6,18 +6,16 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import lightGreen from '@material-ui/core/colors/lightGreen';
-
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+//material UI for radio buttons  
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
 import VendorCreateDisplay from "./VendorCreateDisplay/VendorCreateDisplay"
 
 import VendorGet from './VendorGet'
 
 
-const primary = lightGreen[300]
+
 
 const styles = theme => ({
     container: {
@@ -40,7 +38,7 @@ const styles = theme => ({
       },
     card: {
         maxWidth: 275,
-        backgroundColor: primary,
+        backgroundColor: "#656614",
         color: theme.palette.primary.contrastText
       },
       root: {
@@ -125,22 +123,30 @@ class VendorCreate extends React.Component{
       const {  atMarket } = this.state;
         const { classes } = this.props;
         return(
-            <>
-          <div>
-            <VendorGet/>
+          
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gridTemplateRows: "repeat(5, 1fr)",
+            gridColumnGap: "0",
+            gridRowGap: "0"}}>
+
+            <div style={{gridArea:" 1 / 1 / 3 / 3"}}>
+          <VendorGet/>
           </div>
             <br/>
             <br/>
             <br/>
-               <Grid
-  container
-  direction="column"
-  justify="center"
-  alignItems="center"
->
+            <div style={{gridArea: "1 / 4 / 3 / 6"}}>
             <Card className={classes.card}>
         <CardContent>
-            <h1>Vendor</h1>
+            <h1  style={{
+              backgroundColor: "#C9E3EE",
+              color: "#656614",
+              padding: ".4em",
+              margin: "0 .5em",
+              borderRadius: ".1em",
+            }}>Vendor</h1>
         <form className={classes.container} onSubmit={this.handleSubmit}>
         <TextField
          type="text"
@@ -204,21 +210,29 @@ class VendorCreate extends React.Component{
               value="false"
               checked={ atMarket === false}/>
           </RadioGroup> */}
-          <Button onClick={()=> window.location.reload(false)}  type="submit" variant="contained" color="primary" >
+          <Button onClick={()=> window.location.reload(false)}  type="submit" variant="contained" style={{
+                            borderRadius: ".3em",
+                            color: "#656614",
+                            backgroundColor: "#C9E3EE",
+
+                          }} >
         Submit
       </Button>
        
       </form>
-     
-      
-
-
+ 
       </CardContent>
         </Card>
-        </Grid>
-
-        <VendorCreateDisplay/>
-            </>
+        <div/>
+        
+        <br/>
+        <br/>
+        <div style={{gridArea: " 4 / 2 / 6 / 6"}}>
+        <VendorCreateDisplay />
+        </div>
+      
+            </div>
+            </div>
         )
     }
 }

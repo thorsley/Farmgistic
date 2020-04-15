@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -14,6 +15,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
+    
   },
   dense: {
     marginTop: 19,
@@ -26,6 +28,7 @@ const styles = theme => ({
   },
   input: {
     display: 'none',
+   
   },
 });
 
@@ -117,13 +120,13 @@ class VendorEdit extends Component {
         />
         <br/>
         
-               <Button onClick={()=> window.location.reload(false)} color="primary" type="submit" variant="contained" >Update</Button>
+        <Button onClick={()=> window.location.reload(false)} style={{borderRadius: ".3em",color: "#C9E3EE",backgroundColor: "#656614",}} type="submit" variant="contained" >Update</Button>
                </Grid>
                 </form>
                 
-            </div>
+        </div>
          )
-        }
+   }
 }
  
 VendorEdit.propTypes = {

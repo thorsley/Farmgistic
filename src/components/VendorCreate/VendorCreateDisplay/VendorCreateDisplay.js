@@ -151,7 +151,7 @@ class VendorDisplay extends React.Component {
           <CustomTableCell>Address</CustomTableCell>
           <CustomTableCell>URL</CustomTableCell>
           <CustomTableCell>Bio</CustomTableCell>
-          {/* <CustomTableCell>At Market</CustomTableCell>  */}
+          <CustomTableCell></CustomTableCell> 
           </TableRow>
         </TableHead>
      
@@ -170,7 +170,7 @@ class VendorDisplay extends React.Component {
              <EditIcon className={classes.icon} />
       </IconButton></Tooltip>
 
-      {/* delete button doesnt refresh after click */}
+      {/* delete button */}
       <Tooltip title="Delete"><IconButton aria-label="delete"  onClick={ ()=> {this.deleteVendor(booths)}}variant="contained" color="primary" className={classes.button}>
       <DeleteOutlinedIcon  onClick={()=> window.location.reload(false)} />
         </IconButton ></Tooltip>

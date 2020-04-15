@@ -13,8 +13,8 @@ import Paper from '@material-ui/core/Paper';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: '#1A506B',
-        color: '#E5ED9C'
+        backgroundColor: '#C9E3F2',
+        color: '#656614'
     },
     body: {
       fontSize: 14,
@@ -23,9 +23,10 @@ const CustomTableCell = withStyles(theme => ({
 
   const styles = theme => ({
     root: {
-      width: '100%',
+      width: '50%',
       marginTop: theme.spacing.unit * 3,
       overflowX: 'auto',
+     
     },
     row: {
       '&:nth-of-type(odd)': {
@@ -71,11 +72,22 @@ class  VendorGet extends React.Component {
         const filterdMarkets = this.state.data.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
         return (  
             <div> 
-                <Container>
+                <Container >
+                <h1
+            style={{
+              backgroundColor: "#C9E3EE",
+              color: "#656614",
+              padding: ".4em",
+              margin: "0 .5em",
+              borderRadius: ".1em",
+            }}
+          >
+            Find your Farmers' Market:
+          </h1>
             <SearchInput style={{borderRadius: '10px', marginTop:'5em'}}placeholder="search" className="search-input" onChange={this.searchUpdated}/>
             <br/>
             <Paper >
-            <Table>
+            <Table >
             <TableHead>
             <TableRow>
             <CustomTableCell align="right">Market Name</CustomTableCell>
