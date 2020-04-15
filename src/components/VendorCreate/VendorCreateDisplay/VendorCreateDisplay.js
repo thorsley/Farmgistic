@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
-
 //table imports
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -18,7 +17,6 @@ import blue from "@material-ui/core/colors/blue";
 import Tooltip from "@material-ui/core/Tooltip";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
-
 const primary = blue[800];
 // modal function
 function rand() {
@@ -27,7 +25,6 @@ function rand() {
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
-
   return {
     top: `${top}%`,
     left: `${left}%`,
@@ -44,7 +41,6 @@ const CustomTableCell = withStyles((theme) => ({
     fontSize: 14,
   },
 }))(TableCell);
-
 //modal styles
 const styles = (theme) => ({
   paper: {
@@ -68,7 +64,7 @@ const styles = (theme) => ({
     overflowX: "auto",
   },
   table: {
-    minWidth: 700,
+    // minWidth: "100%"
   },
   row: {
     "&:nth-of-type(odd)": {
@@ -94,7 +90,6 @@ class VendorDisplay extends React.Component {
       activeItematMarket: null,
       open: false,
     };
-
   }
   handleOpen = (booths) => {
     this.setState({
@@ -111,7 +106,7 @@ class VendorDisplay extends React.Component {
     this.setState({ open: false });
   };
   componentDidMount() {
-    fetch("https://dcb-market-server.herokuapp.com//booth", {
+    fetch("https://dcb-market-server.herokuapp.com/booth", {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -143,44 +138,43 @@ class VendorDisplay extends React.Component {
     return (
       <div>
         <Paper className={classes.root}>
-        <Table>
-        <TableHead>
-        <TableRow>
-        <CustomTableCell>#</CustomTableCell>
-          <CustomTableCell>Farm Name</CustomTableCell>
-          <CustomTableCell>Address</CustomTableCell>
-          <CustomTableCell>URL</CustomTableCell>
-          <CustomTableCell>Bio</CustomTableCell>
-          <CustomTableCell></CustomTableCell> 
-          </TableRow>
-        </TableHead>
-     
-       {this.state.data.map((booths,index)=>
-          (
-            <TableBody key={index}>
-          <TableRow>
-          <CustomTableCell align="right">{booths.id}</CustomTableCell>
-             <CustomTableCell align="right">{booths.farmName}</CustomTableCell>
-             <CustomTableCell align="right">{booths.address}</CustomTableCell>
-             <CustomTableCell align="right">{booths.URL}</CustomTableCell>
-             <CustomTableCell align="right">{booths.bio}</CustomTableCell>
-             {/* <CustomTableCell align="right">{booths.atMarket}</CustomTableCell>  */}
-             {/* maps over information and passes the active info to the edit */}
-              <CustomTableCell><Tooltip title="Edit"><IconButton aria-label="Edit" onClick={()=>this.handleOpen(booths)} variant="contained" color="primary" className={classes.button}>
-             <EditIcon className={classes.icon} />
-      </IconButton></Tooltip>
-
-      {/* delete button */}
-      <Tooltip title="Delete"><IconButton aria-label="delete"  onClick={ ()=> {this.deleteVendor(booths)}}variant="contained" color="primary" className={classes.button}>
-      <DeleteOutlinedIcon  onClick={()=> window.location.reload(false)} />
-        </IconButton ></Tooltip>
-        </CustomTableCell>
-      </TableRow>
-             </TableBody>
-          ))} 
-      </Table>
-      </Paper>
-
+          <Table>
+            <TableHead>
+              <TableRow>
+                <CustomTableCell>#</CustomTableCell>
+                <CustomTableCell>Farm Name</CustomTableCell>
+                <CustomTableCell>Address</CustomTableCell>
+                <CustomTableCell>URL</CustomTableCell>
+                <CustomTableCell>Bio</CustomTableCell>
+                {/* <CustomTableCell>At Market</CustomTableCell>  */}
+              </TableRow>
+            </TableHead>
+            {this.state.data.map((booths, index) => (
+              <TableBody key={index}>
+                <TableRow>
+                  <CustomTableCell align="right">{booths.id}</CustomTableCell>
+                  <CustomTableCell align="right">
+                    {booths.farmName}
+                  </CustomTableCell>
+                  <CustomTableCell align="right">
+                    {booths.address}
+                  </CustomTableCell>
+                  <CustomTableCell align="right">{booths.URL}</CustomTableCell>
+                  <CustomTableCell align="right">{booths.bio}</CustomTableCell>
+                  {/* <CustomTableCell align="right">{booths.atMarket}</CustomTableCell>  */}
+                  {/* maps over information and passes the active info to the edit */}
+                  <CustomTableCell>
+                    <Tooltip title="Edit">
+                      <IconButton
+                        aria-label="Edit"
+                        onClick={() => this.handleOpen(booths)}
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        <EditIcon className={classes.icon} />
+                      </IconButton>
+                    </Tooltip>
                     {/* delete button doesnt refresh after click */}
                     <Tooltip title="Delete">
                       <IconButton
@@ -203,7 +197,6 @@ class VendorDisplay extends React.Component {
             ))}
           </Table>
         </Paper>
-
         <div>
           <Modal
             farmURL={this.state.activeItemurl}
@@ -242,5 +235,4 @@ class VendorDisplay extends React.Component {
 VendorDisplay.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 export default withStyles(styles)(VendorDisplay);

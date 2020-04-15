@@ -67,10 +67,12 @@ class Login extends Component {
     return (
       <div>
         <Grid container direction="column" justify="center" alignItems="center">
-          <div style={{backgroundColor:"#E5ED9C", borderRadius:"20%", marginTop:"20px", border: "solid 3px #C9E3EE", color: '#656614'}}>
+          <div style={{backgroundColor:"#E5ED9C", borderRadius:".3em", marginTop:"10%", border: " 3px inset #E5ED9C", color: '#1A506B', padding:"4%"}}>
         <img  src={logo} alt="Logo" />
            <h1>Farmgistic</h1> 
            </div>
+           <br/>
+           <br/>
           <form onSubmit={this.handleSubmit}>
             <TextField
               id="outlined-email-input"

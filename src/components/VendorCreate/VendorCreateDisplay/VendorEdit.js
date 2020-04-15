@@ -113,28 +113,13 @@ class VendorEdit extends Component {
               margin="normal"
               onChange={this.handleUrl}
             />
-            <TextField
-          label={this.props.Name}
-          margin="normal"
-          onChange={this.handleFarmName}
-        />         
-               <TextField
-          label={this.props.farmAddress}
-          margin="normal"
-          onChange={this.handleAddress}
-        />              
-               <TextField
-          label={this.props.farmURL}
-          margin="normal"
-          onChange={this.handleUrl}
-        />
+          
                <TextField
           label={this.props.farmBio}
           margin="normal"
           onChange={this.handleBio}
         />
         <br/>
-        
         <Button onClick={()=> window.location.reload(false)} style={{borderRadius: ".3em",color: "#C9E3EE",backgroundColor: "#656614",}} type="submit" variant="contained" >Update</Button>
                </Grid>
                 </form>

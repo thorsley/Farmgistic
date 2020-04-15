@@ -138,9 +138,11 @@ class VendorCreate extends React.Component{
             gridTemplateColumns: "repeat(6, 1fr)",
             gridTemplateRows: "repeat(5, 1fr)",
             gridColumnGap: "0",
-            gridRowGap: "0"}}>
+            gridRowGap: "0",
+            
+            }}>
 
-            <div style={{gridArea:" 1 / 1 / 3 / 3"}}>
+            <div style={{gridArea:" 1 / 1 / 3 / 3", margin:"5%"}}>
           <VendorGet/>
           </div>
             <br/>
@@ -153,7 +155,7 @@ class VendorCreate extends React.Component{
               backgroundColor: "#C9E3EE",
               color: "#656614",
               padding: ".4em",
-              margin: "0 .5em",
+              margin: "0 3%",
               borderRadius: ".1em",
             }}>Vendor</h1>
         <form className={classes.container} onSubmit={this.handleSubmit}>
@@ -236,7 +238,7 @@ class VendorCreate extends React.Component{
         
         <br/>
         <br/>
-        <div style={{gridArea: " 4 / 2 / 6 / 6"}}>
+        <div style={{gridArea: " 3 / 3 / 6 / 7"}}>
         <VendorCreateDisplay />
         </div>
       
