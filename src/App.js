@@ -28,6 +28,9 @@ class App extends React.Component {
           <Auth loggedIn={this.changeLogin} />
         )}
         {/* <DragnDrop/> */}
+      {/* <VendorCreate/> */}
+
+    
       </div>
     );
   }
